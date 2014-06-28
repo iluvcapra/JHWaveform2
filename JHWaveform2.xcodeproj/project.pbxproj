@@ -10,6 +10,8 @@
 		7D9BF7D0195F4CD400BBE630 /* JHWaveform2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D9BF7D6195F4CD400BBE630 /* JHWaveform2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */; };
 		7D9BF7DD195F4CD400BBE630 /* JHWaveform2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9BF7DC195F4CD400BBE630 /* JHWaveform2Tests.swift */; };
+		7D9BF7E7195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */; };
+		7D9BF7E8195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,7 @@
 		7D9BF7D5195F4CD400BBE630 /* JHWaveform2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JHWaveform2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9BF7DB195F4CD400BBE630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D9BF7DC195F4CD400BBE630 /* JHWaveform2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JHWaveform2Tests.swift; sourceTree = "<group>"; };
+		7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JHAudioWaveformView.swift; path = Views/JHAudioWaveformView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */,
+				7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */,
 				7D9BF7CD195F4CD400BBE630 /* Supporting Files */,
 			);
 			path = JHWaveform2;
@@ -210,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D9BF7E7195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D9BF7E8195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */,
 				7D9BF7DD195F4CD400BBE630 /* JHWaveform2Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +322,7 @@
 		7D9BF7E1195F4CD400BBE630 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -327,12 +334,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		7D9BF7E2195F4CD400BBE630 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
