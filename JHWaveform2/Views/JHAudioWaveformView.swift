@@ -8,17 +8,109 @@
 
 import Cocoa
 
-class JHAudioWaveformView: NSView {
+extension NSRange {
+    func transformRangeAlongY(xform: NSAffineTransform) -> NSRange {
+        let origin = NSPoint(x: 0, y: CGFloat(self.location) )
+        let terminus = NSPoint(x: 0, y: CGFloat(self.location + self.length) )
+        
+        let transformedOrigin = xform.transformPoint(origin)
+        let transformedTerminus = xform.transformPoint(terminus)
+        
+        return NSRange(location:Int(transformedOrigin.y), length:Int(transformedTerminus.y - transformedOrigin.y))
+    }
+}
 
+protocol JHAudioFrameProvider {
+    func readFrames(range: NSRange) -> Float[]
+    func frameCount() -> Int
+}
+
+
+func resampleArray(samples: Float[], length l: Int) -> Float[] {
+    var retArray = Float[](count: l, repeatedValue: 0.0)
+    let boundsRange = Range(start:0, end:samples.count - 1)
+    var ranges = StridedRangeGenerator(boundsRange,stride: 10)
+    
+    var partitionedSamples = Array<Array<Float>>()
+    
+    for range in ranges {
+        
+    }
+    
+    
+    return retArray
+}
+
+class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
+    
+    var sourceProvider:             JHAudioFrameProvider
+    var sourceToTargetTransform:    NSAffineTransform
+    var targetToSourceTransform:    NSAffineTransform {
+    get {
+        let retVal = sourceToTargetTransform
+        retVal.invert()
+        return retVal
+    }
+    }
+    
+    init(sp: JHAudioFrameProvider, transform: NSAffineTransform?) {
+        sourceProvider = sp
+        if (transform) {
+            sourceToTargetTransform = transform!
+        } else {
+            sourceToTargetTransform = NSAffineTransform()
+        }
+        
+    }
+    
+    func frameCount() -> Int  {
+        let inRange = NSRange(location:0 , length: Int(sourceProvider.frameCount()) )
+        let outRange = inRange.transformRangeAlongY(sourceToTargetTransform)
+        
+        return outRange.length
+    }
+    
+    func readFrames(range: NSRange) -> Float[] {
+        let transformedRange = range.transformRangeAlongY(targetToSourceTransform)
+        let sourceSamples = sourceProvider.readFrames(transformedRange)
+        
+        return resampleArray(sourceSamples,length:range.length)
+    }
+    
+}
+
+class JHAudioWaveformView: NSView {
+    
+    var waveformBezierPath: NSBezierPath? = nil
+    var frameProvider:      JHAudioFrameProvider? {
+    
+    didSet {
+        calculateWaveformBezierPath()
+    }
+    }
+    
     init(frame: NSRect) {
         super.init(frame: frame)
-        // Initialization code here.
     }
 
+    func calculateWaveformBezierPath() -> Void {
+        if let fp = frameProvider {
+            
+        } else {
+            waveformBezierPath = nil
+        }
+    }
+    
+    func drawWaveform(dirtyRect : NSRect) {
+        if let path = waveformBezierPath {
+            // FIXME impl
+        }
+    }
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-
         
+        drawWaveform(dirtyRect)
     }
     
 }
