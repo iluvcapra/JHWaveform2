@@ -12,19 +12,37 @@ import AVFoundation
 class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
 
     var audioFile: AVAudioFile
+    var channelIndex: Int
+    
     var frameCount: Int {
     get {
-        return audioFile.length
+        return Int(audioFile.length)
     }
     }
     
-    init(_ asset: AVAudioFile) {
-        self.audioFile = asset
+    init(url: NSURL, channelIndex: Int, error: NSErrorPointer) {
+        var myerror: NSError? = nil
+        self.audioFile = AVAudioFile(forReading: url, commonFormat: AVAudioCommonFormat.PCMFormatFloat32, interleaved: false, error: &myerror)
+        if (myerror) {
+            error.memory = myerror
+        }
+        self.channelIndex = min(channelIndex, Int(audioFile.fileFormat.channelCount) - 1)
     }
     
     func readFrames(range: NSRange) -> Float[] {
-        audioFile.framePosition = range.location
+        var retVal = Float[](count: range.length, repeatedValue: 0.0)
         
+        audioFile.framePosition = AVAudioFramePosition(range.location)
+        var format = audioFile.processingFormat
+        var buf = AVAudioPCMBuffer(PCMFormat: format, frameCapacity: AVAudioFrameCount(range.length) )
+        var error: NSError? = nil
+        audioFile.readIntoBuffer(buf, error: &error)
+        
+        var channelData = buf.floatChannelData[channelIndex]
+        
+        // FIXME finish implementation -- fill the retval
+        
+        return retVal
     }
     
 }
