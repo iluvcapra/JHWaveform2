@@ -11,7 +11,6 @@
 		7D1946FF195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */; };
 		7D9BF7D0195F4CD400BBE630 /* JHWaveform2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D9BF7D6195F4CD400BBE630 /* JHWaveform2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */; };
-		7D9BF7DD195F4CD400BBE630 /* JHWaveform2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9BF7DC195F4CD400BBE630 /* JHWaveform2Tests.swift */; };
 		7D9BF7E7195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */; };
 		7D9BF7E8195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */; };
 /* End PBXBuildFile section */
@@ -33,7 +32,6 @@
 		7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHWaveform2.h; sourceTree = "<group>"; };
 		7D9BF7D5195F4CD400BBE630 /* JHWaveform2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JHWaveform2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9BF7DB195F4CD400BBE630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D9BF7DC195F4CD400BBE630 /* JHWaveform2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JHWaveform2Tests.swift; sourceTree = "<group>"; };
 		7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JHAudioWaveformView.swift; path = Views/JHAudioWaveformView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +94,6 @@
 		7D9BF7D9195F4CD400BBE630 /* JHWaveform2Tests */ = {
 			isa = PBXGroup;
 			children = (
-				7D9BF7DC195F4CD400BBE630 /* JHWaveform2Tests.swift */,
 				7D9BF7DA195F4CD400BBE630 /* Supporting Files */,
 			);
 			path = JHWaveform2Tests;
@@ -228,7 +225,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D9BF7E8195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */,
-				7D9BF7DD195F4CD400BBE630 /* JHWaveform2Tests.swift in Sources */,
 				7D1946FF195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
