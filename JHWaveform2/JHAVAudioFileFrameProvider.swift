@@ -20,12 +20,8 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
     }
     }
     
-    init(url: NSURL, channelIndex: Int, error: NSErrorPointer) {
-        var myerror: NSError? = nil
-        self.audioFile = AVAudioFile(forReading: url, commonFormat: AVAudioCommonFormat.PCMFormatFloat32, interleaved: false, error: &myerror)
-        if (myerror) {
-            error.memory = myerror
-        }
+    init(file: AVAudioFile, channelIndex: Int) {
+        self.audioFile = file
         self.channelIndex = min(channelIndex, Int(audioFile.fileFormat.channelCount) - 1)
     }
     
@@ -40,8 +36,10 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
         
         var channelData = buf.floatChannelData[channelIndex]
         
-        // FIXME finish implementation -- fill the retval
-        
+        for (var i = 0; i < self.frameCount; i++){
+            retVal[i] = channelData[i]
+        }
+        // there must be some faster way of doing this...
         return retVal
     }
     
