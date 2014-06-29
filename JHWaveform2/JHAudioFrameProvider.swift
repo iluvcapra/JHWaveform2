@@ -18,6 +18,10 @@ extension NSRange {
         
         return NSRange(location:Int(transformedOrigin.y), length:Int(transformedTerminus.y - transformedOrigin.y))
     }
+    
+    func toRange() -> Range<Int> {
+        return Range(start:self.location, end:self.location+self.length)
+    }
 }
 
 
@@ -28,19 +32,19 @@ protocol JHAudioFrameProvider {
 
 class JHFloatArrayFrameProvider : JHAudioFrameProvider {
     
-    var data: Float[]
+    var dataBuf : Array<Float>
     
-    init( floatData: Float[]) {
-        data = floatData
+    init( floatData: Float[] ) {
+        dataBuf = floatData.copy()
     }
     
     func readFrames(range: NSRange) -> Float[] {
-        let subrange = Range(start:range.location, end:range.location+range.length)
-        return data[subrange]
+        let s: Range<Int> = range.toRange()
+        return Array(dataBuf[s])
     }
     
     func frameCount() -> Int {
-        return data.count
+        return dataBuf.count
     }
     
 }
