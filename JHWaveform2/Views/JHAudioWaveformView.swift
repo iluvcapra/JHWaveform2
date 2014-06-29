@@ -21,7 +21,10 @@ class JHAudioWaveformView: NSView {
             xform.scaleXBy(self.bounds.width / CGFloat(fp.frameCount), yBy: self.bounds.height )
             transformer = JHWaveformTransformingFrameProvider(fp,transform: nil)
             calculateWaveformBezierPath()
+        } else {
+            transformer = nil
         }
+        self.setNeedsDisplayInRect(self.bounds)
     }
     }
     
@@ -31,21 +34,49 @@ class JHAudioWaveformView: NSView {
 
     func calculateWaveformBezierPath() -> Void {
         if let fp = transformer {
+            let samples = fp.readFrames(NSMakeRange(0, fp.frameCount))
             
+            var path = NSBezierPath()
+            path.moveToPoint(NSPoint(x: 0.0,y: 0.0))
+            for (i, sample) in enumerate(samples) {
+                let point = CGPoint(x: CGFloat(i), y: CGFloat(sample) )
+                path.lineToPoint(point)
+            }
+            path.lineToPoint(NSPoint(x:CGFloat(self.bounds.width), y: 0.0))
+            
+            waveformBezierPath = path
         } else {
             waveformBezierPath = nil
         }
     }
     
-    func drawWaveform(dirtyRect : NSRect) {
+    func drawWaveform(dirtyRect : NSRect) -> Void {
         if let path = waveformBezierPath {
-            // FIXME impl
+            NSGraphicsContext.saveGraphicsState()
+            
+            NSColor.blackColor().setStroke()
+            NSColor.grayColor().setFill()
+            
+            path.fill()
+            path.stroke()
+            
+            NSGraphicsContext.restoreGraphicsState()
         }
     }
     
-    override func drawRect(dirtyRect: NSRect) {
+    func drawBackground(dirtyRect: NSRect) -> Void {
+        NSGraphicsContext.saveGraphicsState()
+        
+        NSColor.whiteColor().setFill()
+        NSBezierPath.fillRect(dirtyRect)
+        
+        NSGraphicsContext.restoreGraphicsState()
+    }
+    
+    override func drawRect(dirtyRect: NSRect) -> Void {
         super.drawRect(dirtyRect)
-        if frameProvider {
+        drawBackground(dirtyRect)
+        if transformer {
             drawWaveform(dirtyRect)
         }
     }
