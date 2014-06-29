@@ -11,10 +11,17 @@ import Cocoa
 class JHAudioWaveformView: NSView {
     
     var waveformBezierPath: NSBezierPath? = nil
+    
+    var transformer:        JHWaveformTransformingFrameProvider?
     var frameProvider:      JHAudioFrameProvider? {
     
     didSet {
-        calculateWaveformBezierPath()
+        if let fp = frameProvider {
+            var xform = NSAffineTransform()
+            xform.scaleXBy(CGFloat(self.bounds.width) / CGFloat(fp.frameCount()), yBy: 1.0 )
+            transformer = JHWaveformTransformingFrameProvider(fp,transform: nil)
+            calculateWaveformBezierPath()
+        }
     }
     }
     
@@ -23,7 +30,7 @@ class JHAudioWaveformView: NSView {
     }
 
     func calculateWaveformBezierPath() -> Void {
-        if let fp = frameProvider {
+        if let fp = transformer {
             
         } else {
             waveformBezierPath = nil
@@ -38,8 +45,9 @@ class JHAudioWaveformView: NSView {
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-        
-        drawWaveform(dirtyRect)
+        if frameProvider {
+            drawWaveform(dirtyRect)
+        }
     }
     
 }

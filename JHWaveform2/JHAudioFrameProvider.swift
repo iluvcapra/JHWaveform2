@@ -9,15 +9,15 @@
 import Foundation
 
 extension NSRange {
-    func transformRangeAlongY(xform: NSAffineTransform) -> NSRange {
+    func transformRangeAlongX(xform: NSAffineTransform) -> NSRange {
         let origin = NSPoint(x: 0, y: CGFloat(self.location) )
         let terminus = NSPoint(x: 0, y: CGFloat(self.location + self.length) )
         
         let transformedOrigin = xform.transformPoint(origin)
         let transformedTerminus = xform.transformPoint(terminus)
-        let length = ceil(transformedTerminus.y - transformedOrigin.y)
+        let length = ceil(transformedTerminus.x - transformedOrigin.x)
         
-        return NSRange(location:Int(transformedOrigin.y), length:Int(length))
+        return NSRange(location:Int(transformedOrigin.x), length:Int(length))
     }
     
     func toRange() -> Range<Int> {
@@ -90,13 +90,13 @@ class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
     
     func frameCount() -> Int  {
         let inRange = NSRange(location:0 , length: Int(sourceProvider.frameCount()) )
-        let outRange = inRange.transformRangeAlongY(sourceToTargetTransform)
+        let outRange = inRange.transformRangeAlongX(sourceToTargetTransform)
         
         return outRange.length
     }
     
     func readFrames(range: NSRange) -> Float[] {
-        let transformedRange = range.transformRangeAlongY(targetToSourceTransform)
+        let transformedRange = range.transformRangeAlongX(targetToSourceTransform)
         let sourceSamples = sourceProvider.readFrames(transformedRange)
         
         return resampleArray(sourceSamples,length:range.length)
