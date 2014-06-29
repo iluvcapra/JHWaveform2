@@ -26,10 +26,24 @@ protocol JHAudioFrameProvider {
     func frameCount() -> Int
 }
 
-
-
-
-
+class JHFloatArrayFrameProvider : JHAudioFrameProvider {
+    
+    var data: Float[]
+    
+    init( floatData: Float[]) {
+        data = floatData
+    }
+    
+    func readFrames(range: NSRange) -> Float[] {
+        let subrange = Range(start:range.location, end:range.location+range.length)
+        return data[subrange]
+    }
+    
+    func frameCount() -> Int {
+        return data.count
+    }
+    
+}
 
 func resampleArray(samples: Float[], length l: Int) -> Float[] {
     var retArray = Float[]()
