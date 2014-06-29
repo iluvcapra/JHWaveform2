@@ -28,7 +28,7 @@ class JHWaveformTransformingFrameProvider_Test: XCTestCase {
         
         XCTAssertEqual(testXformer.frameCount(), 3, "Frame count is incorrect")
         let coalescedData = testXformer.readFrames(NSMakeRange(0, 3))
-        XCTAssertEqualObjects(coalescedData, [1.0,2.0,3.0], "")
+        XCTAssertEqualObjects(coalescedData, [1.0,2.0,3.0], "Coalesced data is incorrect")
     }
 
 }
