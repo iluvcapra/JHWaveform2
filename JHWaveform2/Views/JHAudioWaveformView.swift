@@ -27,16 +27,17 @@ protocol JHAudioFrameProvider {
 
 
 func resampleArray(samples: Float[], length l: Int) -> Float[] {
-    var retArray = Float[](count: l, repeatedValue: 0.0)
+    var retArray = Float[]()
     let boundsRange = Range(start:0, end:samples.count - 1)
-    var ranges = StridedRangeGenerator(boundsRange,stride: 10)
+    let stride = samples.count / l
+    let ranges = StridedRangeGenerator(boundsRange,stride: stride)
     
-    var partitionedSamples = Array<Array<Float>>()
-    
-    for range in ranges {
-        
+    for i in ranges {
+        let end = min(i+stride, boundsRange.endIndex + 1)
+        let theRange = Range(start: i, end: end)
+        let subArray = samples[theRange]
+        retArray.append(maxElement(subArray))
     }
-    
     
     return retArray
 }
