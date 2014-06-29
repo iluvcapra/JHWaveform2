@@ -21,10 +21,10 @@ class JHWaveformTransformingFrameProvider_Test: XCTestCase {
     }
 
     func testCoalesce() {
-        let testSrc = JHFloatArrayFrameProvider(floatData:[1.0,-1.0,2.0,-1.0,3.0,-1.0])
+        let testSrc = JHFloatArrayFrameProvider([1.0,-1.0,2.0,-1.0,3.0,-1.0])
         var xform = NSAffineTransform()
         xform.scaleBy(0.5)
-        let testXformer = JHWaveformTransformingFrameProvider(sp: testSrc, transform: xform)
+        let testXformer = JHWaveformTransformingFrameProvider(testSrc, transform: xform)
         
         XCTAssertEqual(testXformer.frameCount(), 3, "Frame count is incorrect")
         let coalescedData = testXformer.readFrames(NSMakeRange(0, 3))

@@ -34,7 +34,7 @@ class JHFloatArrayFrameProvider : JHAudioFrameProvider {
     
     var dataBuf : Array<Float>
     
-    init( floatData: Float[] ) {
+    init(_ floatData: Float[] ) {
         dataBuf = floatData.copy()
     }
     
@@ -77,7 +77,7 @@ class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
     }
     }
     
-    init(sp: JHAudioFrameProvider, transform: NSAffineTransform?) {
+    init(_ sp: JHAudioFrameProvider, transform: NSAffineTransform?) {
         sourceProvider = sp
         if (transform) {
             sourceToTargetTransform = transform!
