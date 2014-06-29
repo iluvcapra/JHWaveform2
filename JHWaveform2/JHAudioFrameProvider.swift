@@ -15,8 +15,9 @@ extension NSRange {
         
         let transformedOrigin = xform.transformPoint(origin)
         let transformedTerminus = xform.transformPoint(terminus)
+        let length = ceil(transformedTerminus.y - transformedOrigin.y)
         
-        return NSRange(location:Int(transformedOrigin.y), length:Int(transformedTerminus.y - transformedOrigin.y))
+        return NSRange(location:Int(transformedOrigin.y), length:Int(length))
     }
     
     func toRange() -> Range<Int> {

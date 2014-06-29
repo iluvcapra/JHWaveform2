@@ -31,4 +31,21 @@ class JHWaveformTransformingFrameProvider_Test: XCTestCase {
         XCTAssertEqualObjects(coalescedData, [1.0,2.0,3.0], "Coalesced data is incorrect")
     }
 
+    func testBiggerCoalesce() {
+        
+        let testSrc = JHFloatArrayFrameProvider([ 0.1,  0.2, 0.3 , 0.4,
+            0.5 , 0.1, -0.5, 0.2,
+            -1.4,  3.2, 0.4 , 4.2,
+            1.5, 9.3, -4.6, 1.0,
+            -1.2, -1.0, 1.0])
+        
+        var xform = NSAffineTransform()
+        xform.scaleBy(0.5)
+        let testXformer = JHWaveformTransformingFrameProvider(testSrc, transform: xform)
+        XCTAssertEqual(testXformer.frameCount(), 10, "")
+        
+        let coalescedData = testXformer.readFrames(NSMakeRange(0,10))
+        XCTAssertEqual(coalescedData.count, 10)
+    }
+    
 }
