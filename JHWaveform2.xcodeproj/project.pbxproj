@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D1946FE195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */; };
+		7D1946FF195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */; };
 		7D9BF7D0195F4CD400BBE630 /* JHWaveform2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D9BF7D6195F4CD400BBE630 /* JHWaveform2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */; };
 		7D9BF7DD195F4CD400BBE630 /* JHWaveform2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9BF7DC195F4CD400BBE630 /* JHWaveform2Tests.swift */; };
@@ -25,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHAudioFrameProvider.swift; sourceTree = "<group>"; };
 		7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JHWaveform2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9BF7CE195F4CD400BBE630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHWaveform2.h; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */,
+				7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */,
 				7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */,
 				7D9BF7CD195F4CD400BBE630 /* Supporting Files */,
 			);
@@ -215,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D9BF7E7195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */,
+				7D1946FE195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +229,7 @@
 			files = (
 				7D9BF7E8195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */,
 				7D9BF7DD195F4CD400BBE630 /* JHWaveform2Tests.swift in Sources */,
+				7D1946FF195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +415,7 @@
 				7D9BF7E2195F4CD400BBE630 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D9BF7E3195F4CD400BBE630 /* Build configuration list for PBXNativeTarget "JHWaveform2Tests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +424,7 @@
 				7D9BF7E5195F4CD400BBE630 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
