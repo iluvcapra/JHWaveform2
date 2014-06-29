@@ -27,13 +27,19 @@ extension NSRange {
 
 
 protocol JHAudioFrameProvider {
+    
+    var frameCount: Int  { get }
+    
     func readFrames(range: NSRange) -> Float[]
-    func frameCount() -> Int
 }
 
 class JHFloatArrayFrameProvider : JHAudioFrameProvider {
     
     var dataBuf : Array<Float>
+    
+    var frameCount: Int {
+        return dataBuf.count
+    }
     
     init(_ floatData: Float[] ) {
         dataBuf = floatData.copy()
@@ -42,10 +48,6 @@ class JHFloatArrayFrameProvider : JHAudioFrameProvider {
     func readFrames(range: NSRange) -> Float[] {
         let s: Range<Int> = range.toRange()
         return Array(dataBuf[s])
-    }
-    
-    func frameCount() -> Int {
-        return dataBuf.count
     }
     
 }
@@ -78,6 +80,15 @@ class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
     }
     }
     
+    var frameCount: Int {
+    get {
+        let inRange = NSRange(location:0 , length: Int(sourceProvider.frameCount) )
+        let outRange = inRange.transformRangeAlongX(sourceToTargetTransform)
+        
+        return outRange.length
+    }
+    }
+    
     init(_ sp: JHAudioFrameProvider, transform: NSAffineTransform?) {
         sourceProvider = sp
         if (transform) {
@@ -87,14 +98,7 @@ class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
         }
         
     }
-    
-    func frameCount() -> Int  {
-        let inRange = NSRange(location:0 , length: Int(sourceProvider.frameCount()) )
-        let outRange = inRange.transformRangeAlongX(sourceToTargetTransform)
-        
-        return outRange.length
-    }
-    
+
     func readFrames(range: NSRange) -> Float[] {
         let transformedRange = range.transformRangeAlongX(targetToSourceTransform)
         let sourceSamples = sourceProvider.readFrames(transformedRange)

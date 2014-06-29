@@ -18,7 +18,7 @@ class JHAudioWaveformView: NSView {
     didSet {
         if let fp = frameProvider {
             var xform = NSAffineTransform()
-            xform.scaleXBy(CGFloat(self.bounds.width) / CGFloat(fp.frameCount()), yBy: 1.0 )
+            xform.scaleXBy(self.bounds.width / CGFloat(fp.frameCount), yBy: self.bounds.height )
             transformer = JHWaveformTransformingFrameProvider(fp,transform: nil)
             calculateWaveformBezierPath()
         }
