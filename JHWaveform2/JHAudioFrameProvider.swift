@@ -10,14 +10,14 @@ import Foundation
 
 extension NSRange {
     func transformRangeAlongX(xform: NSAffineTransform) -> NSRange {
-        let origin = NSPoint(x: 0, y: CGFloat(self.location) )
-        let terminus = NSPoint(x: 0, y: CGFloat(self.location + self.length) )
+        let start = NSPoint(x: CGFloat(self.location), y: 0 )
+        let end = NSPoint(x: CGFloat(self.location + self.length), y: 0 )
         
-        let transformedOrigin = xform.transformPoint(origin)
-        let transformedTerminus = xform.transformPoint(terminus)
-        let length = ceil(transformedTerminus.x - transformedOrigin.x)
+        let transformedStart = xform.transformPoint(start)
+        let transformedEnd = xform.transformPoint(end)
+        let length = ceil(transformedEnd.x - transformedStart.x)
         
-        return NSRange(location:Int(transformedOrigin.x), length:Int(length))
+        return NSRange(location:Int(transformedStart.x), length:Int(length))
     }
     
     func toRange() -> Range<Int> {
@@ -53,16 +53,17 @@ class JHFloatArrayFrameProvider : JHAudioFrameProvider {
 }
 
 func resampleArray(samples: Float[], length l: Int) -> Float[] {
-    var retArray = Float[]()
+    var retArray = Float[](count: l, repeatedValue: 0.0)
     let boundsRange = Range(start:0, end:samples.count - 1)
     let stride = samples.count / l
     let ranges = StridedRangeGenerator(boundsRange,stride: stride)
     
+    var num = 0
     for i in ranges {
         let end = min(i+stride, boundsRange.endIndex + 1)
         let theRange = Range(start: i, end: end)
         let subArray = samples[theRange]
-        retArray.append(maxElement(subArray))
+        retArray[ num++ ] = maxElement(subArray)
     }
     
     return retArray
