@@ -104,6 +104,9 @@ class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
         let transformedRange = range.transformRangeAlongX(targetToSourceTransform)
         let sourceSamples = sourceProvider.readFrames(transformedRange)
         
-        return resampleArray(sourceSamples,length:range.length)
+        let xform = sourceToTargetTransform
+        return resampleArray(sourceSamples,length:range.length).map {
+            Float( xform.transformPoint( CGPointMake(0.0, CGFloat($0) )).y )
+        }
     }
 }
