@@ -33,15 +33,25 @@ class JHTransformingFrameProvider_Files_Test: XCTestCase {
         
         let nativeFrameProvider = JHAVAudioFileFrameProvider(file: audioFile, channelIndex: 0)
         
-        let targetBufferSize = 100
+        let targetBufferSize = 20
         var xform = NSAffineTransform()
         
-        xform.scaleXBy( CGFloat(targetBufferSize) / CGFloat(nativeFrameProvider.frameCount), yBy: 100.0)
+        xform.scaleXBy( CGFloat(targetBufferSize) / CGFloat(nativeFrameProvider.frameCount), yBy: 0.01)
         
         let transformingProvider = JHWaveformTransformingFrameProvider(nativeFrameProvider,transform: xform)
         
         var buffer = transformingProvider.readFrames(NSMakeRange(0, targetBufferSize))
-        println(buffer)
+        
+        let targetBufferShould = [
+            80.0,   80.0,   80.0,   80.0,   80.0,
+            0.0,    0.0,
+            80.0,   80.0,   80.0,   80.0,   80.0,   80.0,
+            0.0,    0.0,
+            80.0,   80.0,   80.0,   80.0,   80.0]
+        
+        for i in 0..buffer.count {
+           XCTAssertEqualWithAccuracy(Float(targetBufferShould[i]), Float(buffer[i]), 10.0, "Target")
+        }
         
     }
 
