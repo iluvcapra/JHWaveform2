@@ -18,9 +18,9 @@ Interfaces
 * JHAudioFrameProvider
   `JHAudioFrameProvider` is a protocol for classes that vend samples to an 
   `JHAudioWaveformView`.
-** `JHAVAudioFileFrameProvider` is a class that implements `JHAudioFrameProvider`, it wraps
+  * `JHAVAudioFileFrameProvider` is a class that implements `JHAudioFrameProvider`, it wraps
   a channel of an `AVAudioFile`.
-** `JHWaveformTransformingFrameProvider` is a class that implements `JHAudioFrameProvider`,
+  * `JHWaveformTransformingFrameProvider` is a class that implements `JHAudioFrameProvider`,
   it wraps another `JHAudioFrameProvider` and passes its frames through an affine transform,
   resampling and scaling the wrapped provider.
   
