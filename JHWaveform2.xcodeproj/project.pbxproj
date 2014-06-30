@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D09169F1960E27E00776EE7 /* Mono DTMF Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169C1960E27E00776EE7 /* Mono DTMF Test.wav */; };
+		7D0916A01960E27E00776EE7 /* Mono Wav Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169D1960E27E00776EE7 /* Mono Wav Test.wav */; };
+		7D0916A11960E27E00776EE7 /* Stereo Pluck Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169E1960E27E00776EE7 /* Stereo Pluck Test.wav */; };
 		7D1946FE195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */; };
 		7D1946FF195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */; };
 		7D47D652195FBAD10026E09C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D47D651195FBAD10026E09C /* AVFoundation.framework */; };
@@ -30,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D09169C1960E27E00776EE7 /* Mono DTMF Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Mono DTMF Test.wav"; sourceTree = "<group>"; };
+		7D09169D1960E27E00776EE7 /* Mono Wav Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Mono Wav Test.wav"; sourceTree = "<group>"; };
+		7D09169E1960E27E00776EE7 /* Stereo Pluck Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Stereo Pluck Test.wav"; sourceTree = "<group>"; };
 		7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHAudioFrameProvider.swift; sourceTree = "<group>"; };
 		7D47D651195FBAD10026E09C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7D74D598195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHWaveformTransformingFrameProvider_Test.swift; sourceTree = "<group>"; };
@@ -62,6 +68,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D0916A21960E28400776EE7 /* Test WAV Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D09169C1960E27E00776EE7 /* Mono DTMF Test.wav */,
+				7D09169D1960E27E00776EE7 /* Mono Wav Test.wav */,
+				7D09169E1960E27E00776EE7 /* Stereo Pluck Test.wav */,
+			);
+			name = "Test WAV Files";
+			sourceTree = "<group>";
+		};
 		7D9BF7C0195F4CD400BBE630 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +120,7 @@
 		7D9BF7D9195F4CD400BBE630 /* JHWaveform2Tests */ = {
 			isa = PBXGroup;
 			children = (
+				7D0916A21960E28400776EE7 /* Test WAV Files */,
 				7D9BF7DA195F4CD400BBE630 /* Supporting Files */,
 				7D74D598195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift */,
 			);
@@ -216,6 +233,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D0916A01960E27E00776EE7 /* Mono Wav Test.wav in Resources */,
+				7D0916A11960E27E00776EE7 /* Stereo Pluck Test.wav in Resources */,
+				7D09169F1960E27E00776EE7 /* Mono DTMF Test.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
