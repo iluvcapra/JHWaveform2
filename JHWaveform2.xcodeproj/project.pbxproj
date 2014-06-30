@@ -11,6 +11,7 @@
 		7D002F741961237E00F5F6DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D002F731961237E00F5F6DF /* AppDelegate.swift */; };
 		7D002F761961237E00F5F6DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D002F751961237E00F5F6DF /* Images.xcassets */; };
 		7D002F791961237E00F5F6DF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D002F771961237E00F5F6DF /* MainMenu.xib */; };
+		7D002F8E1961242E00F5F6DF /* JHWaveform2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */; };
 		7D09169F1960E27E00776EE7 /* Mono_DTMF_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169C1960E27E00776EE7 /* Mono_DTMF_Test.wav */; };
 		7D0916A01960E27E00776EE7 /* Mono_Wav_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169D1960E27E00776EE7 /* Mono_Wav_Test.wav */; };
 		7D0916A11960E27E00776EE7 /* Stereo_Pluck_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169E1960E27E00776EE7 /* Stereo_Pluck_Test.wav */; };
@@ -35,6 +36,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7D002F6C1961237E00F5F6DF;
 			remoteInfo = "WaveformView Demo";
+		};
+		7D002F8C1961242700F5F6DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D9BF7C1195F4CD400BBE630 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D9BF7C9195F4CD400BBE630;
+			remoteInfo = JHWaveform2;
 		};
 		7D9BF7D7195F4CD400BBE630 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -76,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D002F8E1961242E00F5F6DF /* JHWaveform2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +232,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7D002F8D1961242700F5F6DF /* PBXTargetDependency */,
 			);
 			name = "WaveformView Demo";
 			productName = "WaveformView Demo";
@@ -412,6 +422,11 @@
 			isa = PBXTargetDependency;
 			target = 7D002F6C1961237E00F5F6DF /* WaveformView Demo */;
 			targetProxy = 7D002F7F1961237F00F5F6DF /* PBXContainerItemProxy */;
+		};
+		7D002F8D1961242700F5F6DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7D9BF7C9195F4CD400BBE630 /* JHWaveform2 */;
+			targetProxy = 7D002F8C1961242700F5F6DF /* PBXContainerItemProxy */;
 		};
 		7D9BF7D8195F4CD400BBE630 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
