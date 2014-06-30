@@ -35,9 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7D09169C1960E27E00776EE7 /* Mono_DTMF_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Mono_DTMF_Test.wav; sourceTree = "<group>"; };
-		7D09169D1960E27E00776EE7 /* Mono_Wav_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Mono_Wav_Test.wav; sourceTree = "<group>"; };
-		7D09169E1960E27E00776EE7 /* Stereo_Pluck_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Stereo_Pluck_Test.wav; sourceTree = "<group>"; };
+		7D09169C1960E27E00776EE7 /* Mono_DTMF_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Mono_DTMF_Test.wav; path = TestAudioFiles/Mono_DTMF_Test.wav; sourceTree = "<group>"; };
+		7D09169D1960E27E00776EE7 /* Mono_Wav_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Mono_Wav_Test.wav; path = TestAudioFiles/Mono_Wav_Test.wav; sourceTree = "<group>"; };
+		7D09169E1960E27E00776EE7 /* Stereo_Pluck_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Stereo_Pluck_Test.wav; path = TestAudioFiles/Stereo_Pluck_Test.wav; sourceTree = "<group>"; };
 		7D0916A31960F54900776EE7 /* JHAVAudioFileFrameProvider_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHAVAudioFileFrameProvider_Test.swift; sourceTree = "<group>"; };
 		7D0916A51961010A00776EE7 /* JHTransformingFrameProvider_Files_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHTransformingFrameProvider_Files_Test.swift; sourceTree = "<group>"; };
 		7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHAudioFrameProvider.swift; sourceTree = "<group>"; };
