@@ -7,9 +7,15 @@
 //
 
 import XCTest
+import AVFoundation
+
 
 class JHTransformingFrameProvider_Files_Test: XCTestCase {
 
+    let monoDTMF_url  = urlForWAV(JHTransformingFrameProvider_Files_Test.self, "Mono_DTMF_Test")
+    let monoWav_url = urlForWAV(JHTransformingFrameProvider_Files_Test.self, "Mono_Wav_Test")
+    let stereoPluck_url  = urlForWAV(JHTransformingFrameProvider_Files_Test.self , "Stereo_Pluck_Test")
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -20,6 +26,24 @@ class JHTransformingFrameProvider_Files_Test: XCTestCase {
         super.tearDown()
     }
 
+    func testDTMF() {
+        let audioFile = AVAudioFile(forReading: monoDTMF_url,
+            commonFormat: AVAudioCommonFormat.PCMFormatFloat32,
+            interleaved: false, error: nil)
+        
+        let nativeFrameProvider = JHAVAudioFileFrameProvider(file: audioFile, channelIndex: 0)
+        
+        let targetBufferSize = 100
+        var xform = NSAffineTransform()
+        
+        xform.scaleXBy( CGFloat(targetBufferSize) / CGFloat(nativeFrameProvider.frameCount), yBy: 100.0)
+        
+        let transformingProvider = JHWaveformTransformingFrameProvider(nativeFrameProvider,transform: xform)
+        
+        var buffer = transformingProvider.readFrames(NSMakeRange(0, targetBufferSize))
+        println(buffer)
+        
+    }
 
     
 }
