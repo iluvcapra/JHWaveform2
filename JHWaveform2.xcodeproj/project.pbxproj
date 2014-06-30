@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D002F721961237E00F5F6DF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D002F711961237E00F5F6DF /* main.swift */; };
+		7D002F741961237E00F5F6DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D002F731961237E00F5F6DF /* AppDelegate.swift */; };
+		7D002F761961237E00F5F6DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D002F751961237E00F5F6DF /* Images.xcassets */; };
+		7D002F791961237E00F5F6DF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D002F771961237E00F5F6DF /* MainMenu.xib */; };
 		7D09169F1960E27E00776EE7 /* Mono_DTMF_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169C1960E27E00776EE7 /* Mono_DTMF_Test.wav */; };
 		7D0916A01960E27E00776EE7 /* Mono_Wav_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169D1960E27E00776EE7 /* Mono_Wav_Test.wav */; };
 		7D0916A11960E27E00776EE7 /* Stereo_Pluck_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169E1960E27E00776EE7 /* Stereo_Pluck_Test.wav */; };
@@ -25,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7D002F7F1961237F00F5F6DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D9BF7C1195F4CD400BBE630 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D002F6C1961237E00F5F6DF;
+			remoteInfo = "WaveformView Demo";
+		};
 		7D9BF7D7195F4CD400BBE630 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7D9BF7C1195F4CD400BBE630 /* Project object */;
@@ -35,6 +46,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D002F6D1961237E00F5F6DF /* WaveformView Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WaveformView Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D002F701961237E00F5F6DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D002F711961237E00F5F6DF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		7D002F731961237E00F5F6DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7D002F751961237E00F5F6DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7D002F781961237E00F5F6DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		7D002F7E1961237F00F5F6DF /* WaveformView DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WaveformView DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D09169C1960E27E00776EE7 /* Mono_DTMF_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Mono_DTMF_Test.wav; path = TestAudioFiles/Mono_DTMF_Test.wav; sourceTree = "<group>"; };
 		7D09169D1960E27E00776EE7 /* Mono_Wav_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Mono_Wav_Test.wav; path = TestAudioFiles/Mono_Wav_Test.wav; sourceTree = "<group>"; };
 		7D09169E1960E27E00776EE7 /* Stereo_Pluck_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Stereo_Pluck_Test.wav; path = TestAudioFiles/Stereo_Pluck_Test.wav; sourceTree = "<group>"; };
@@ -54,6 +72,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7D002F6A1961237E00F5F6DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D002F7B1961237F00F5F6DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7D9BF7C6195F4CD400BBE630 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,6 +105,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D002F6E1961237E00F5F6DF /* WaveformView Demo */ = {
+			isa = PBXGroup;
+			children = (
+				7D002F731961237E00F5F6DF /* AppDelegate.swift */,
+				7D002F751961237E00F5F6DF /* Images.xcassets */,
+				7D002F771961237E00F5F6DF /* MainMenu.xib */,
+				7D002F6F1961237E00F5F6DF /* Supporting Files */,
+			);
+			path = "WaveformView Demo";
+			sourceTree = "<group>";
+		};
+		7D002F6F1961237E00F5F6DF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D002F701961237E00F5F6DF /* Info.plist */,
+				7D002F711961237E00F5F6DF /* main.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		7D0916A21960E28400776EE7 /* Test WAV Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +142,7 @@
 				7D47D651195FBAD10026E09C /* AVFoundation.framework */,
 				7D9BF7CC195F4CD400BBE630 /* JHWaveform2 */,
 				7D9BF7D9195F4CD400BBE630 /* JHWaveform2Tests */,
+				7D002F6E1961237E00F5F6DF /* WaveformView Demo */,
 				7D9BF7CB195F4CD400BBE630 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +152,8 @@
 			children = (
 				7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */,
 				7D9BF7D5195F4CD400BBE630 /* JHWaveform2Tests.xctest */,
+				7D002F6D1961237E00F5F6DF /* WaveformView Demo.app */,
+				7D002F7E1961237F00F5F6DF /* WaveformView DemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,6 +212,41 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		7D002F6C1961237E00F5F6DF /* WaveformView Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D002F8A1961237F00F5F6DF /* Build configuration list for PBXNativeTarget "WaveformView Demo" */;
+			buildPhases = (
+				7D002F691961237E00F5F6DF /* Sources */,
+				7D002F6A1961237E00F5F6DF /* Frameworks */,
+				7D002F6B1961237E00F5F6DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WaveformView Demo";
+			productName = "WaveformView Demo";
+			productReference = 7D002F6D1961237E00F5F6DF /* WaveformView Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7D002F7D1961237F00F5F6DF /* WaveformView DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D002F8B1961237F00F5F6DF /* Build configuration list for PBXNativeTarget "WaveformView DemoTests" */;
+			buildPhases = (
+				7D002F7A1961237F00F5F6DF /* Sources */,
+				7D002F7B1961237F00F5F6DF /* Frameworks */,
+				7D002F7C1961237F00F5F6DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7D002F801961237F00F5F6DF /* PBXTargetDependency */,
+			);
+			name = "WaveformView DemoTests";
+			productName = "WaveformView DemoTests";
+			productReference = 7D002F7E1961237F00F5F6DF /* WaveformView DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7D9BF7C9195F4CD400BBE630 /* JHWaveform2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D9BF7E0195F4CD400BBE630 /* Build configuration list for PBXNativeTarget "JHWaveform2" */;
@@ -202,6 +292,13 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Jamie Hardt";
 				TargetAttributes = {
+					7D002F6C1961237E00F5F6DF = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					7D002F7D1961237F00F5F6DF = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 7D002F6C1961237E00F5F6DF;
+					};
 					7D9BF7C9195F4CD400BBE630 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -217,6 +314,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7D9BF7C0195F4CD400BBE630;
 			productRefGroup = 7D9BF7CB195F4CD400BBE630 /* Products */;
@@ -225,11 +323,29 @@
 			targets = (
 				7D9BF7C9195F4CD400BBE630 /* JHWaveform2 */,
 				7D9BF7D4195F4CD400BBE630 /* JHWaveform2Tests */,
+				7D002F6C1961237E00F5F6DF /* WaveformView Demo */,
+				7D002F7D1961237F00F5F6DF /* WaveformView DemoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7D002F6B1961237E00F5F6DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D002F761961237E00F5F6DF /* Images.xcassets in Resources */,
+				7D002F791961237E00F5F6DF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D002F7C1961237F00F5F6DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7D9BF7C8195F4CD400BBE630 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +366,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7D002F691961237E00F5F6DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D002F741961237E00F5F6DF /* AppDelegate.swift in Sources */,
+				7D002F721961237E00F5F6DF /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D002F7A1961237F00F5F6DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7D9BF7C5195F4CD400BBE630 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,6 +408,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7D002F801961237F00F5F6DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7D002F6C1961237E00F5F6DF /* WaveformView Demo */;
+			targetProxy = 7D002F7F1961237F00F5F6DF /* PBXContainerItemProxy */;
+		};
 		7D9BF7D8195F4CD400BBE630 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7D9BF7C9195F4CD400BBE630 /* JHWaveform2 */;
@@ -283,7 +420,86 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		7D002F771961237E00F5F6DF /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D002F781961237E00F5F6DF /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		7D002F861961237F00F5F6DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WaveformView Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7D002F871961237F00F5F6DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "WaveformView Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7D002F881961237F00F5F6DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WaveformView Demo.app/Contents/MacOS/WaveformView Demo";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WaveformView DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		7D002F891961237F00F5F6DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WaveformView Demo.app/Contents/MacOS/WaveformView Demo";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WaveformView DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
 		7D9BF7DE195F4CD400BBE630 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -439,6 +655,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7D002F8A1961237F00F5F6DF /* Build configuration list for PBXNativeTarget "WaveformView Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D002F861961237F00F5F6DF /* Debug */,
+				7D002F871961237F00F5F6DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7D002F8B1961237F00F5F6DF /* Build configuration list for PBXNativeTarget "WaveformView DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D002F881961237F00F5F6DF /* Debug */,
+				7D002F891961237F00F5F6DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		7D9BF7C4195F4CD400BBE630 /* Build configuration list for PBXProject "JHWaveform2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
