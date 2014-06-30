@@ -19,6 +19,40 @@ class JHWaveformTransformingFrameProvider_Test: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    /*
+    
+    Range conversion - when ranges are scaled in time, they must round their offset DOWN and
+    their length UP.
+    
+    */
+    
+    func testSimpleRangeConverstion() {
+        let testRange = NSMakeRange(0, 100)
+        var affineTransform = NSAffineTransform()
+        affineTransform.scaleXBy(0.3, yBy: 1)
+        let outRange = testRange.transformRangeAlongX(affineTransform)
+        XCTAssertEqualObjects(outRange.location, 0, "")
+        XCTAssertEqualObjects(outRange.length, 30, "")
+    }
+    
+    func testRangeConversion() {
+        let testRange = NSMakeRange(5,10)
+        var affineTransform = NSAffineTransform()
+        affineTransform.scaleXBy(0.9, yBy: 1.0)
+        let outRange = testRange.transformRangeAlongX(affineTransform)
+        XCTAssertEqualObjects(outRange.location, 4, "")
+        XCTAssertEqualObjects(outRange.length, 9, "")
+    }
+    
+    func testRangeConversionExp() {
+        let testRange = NSMakeRange(5,10)
+        var affineTransform = NSAffineTransform()
+        affineTransform.scaleXBy(1.1, yBy: 1.0)
+        let outRange = testRange.transformRangeAlongX(affineTransform)
+        XCTAssertEqualObjects(outRange.location, 5, "")
+        XCTAssertEqualObjects(outRange.length, 11, "")
+    }
 
     func testCoalesce() {
         let testSrc = JHFloatArrayFrameProvider([1.0,-1.0,2.0,-1.0,3.0,-1.0])
