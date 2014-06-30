@@ -66,12 +66,12 @@ class JHWaveformTransformingFrameProvider_Test: XCTestCase {
     }
     
     func testYScale() {
-        let testSrc = JHFloatArrayFrameProvider([3.0, 2.0,3.0])
+        let testSrc = JHFloatArrayFrameProvider([3.0, -2.0, 3.0,5.0])
         var xform = NSAffineTransform()
-        xform.scaleXBy(0.01, yBy: 1.0)
+        xform.scaleXBy(1.0, yBy: 0.01)
         let testXformer = JHWaveformTransformingFrameProvider(testSrc, transform: xform)
-        let coalescedData = testXformer.readFrames(NSMakeRange(0, 3))
-        XCTAssertEqualObjects(coalescedData, [300.0, 200.0, 300.0], "Coalecsed Y scaled data is incorrect")
+        let coalescedData = testXformer.readFrames(NSMakeRange(0, 4))
+        XCTAssertEqualObjects(coalescedData, [300.0, -200.0, 300.0,500.0], "Coalecsed Y scaled data is incorrect")
 
     }
 
