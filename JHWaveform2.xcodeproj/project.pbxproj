@@ -11,6 +11,7 @@
 		7D0916A01960E27E00776EE7 /* Mono_Wav_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169D1960E27E00776EE7 /* Mono_Wav_Test.wav */; };
 		7D0916A11960E27E00776EE7 /* Stereo_Pluck_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169E1960E27E00776EE7 /* Stereo_Pluck_Test.wav */; };
 		7D0916A41960F54900776EE7 /* JHAVAudioFileFrameProvider_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0916A31960F54900776EE7 /* JHAVAudioFileFrameProvider_Test.swift */; };
+		7D0916A61961010B00776EE7 /* JHTransformingFrameProvider_Files_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0916A51961010A00776EE7 /* JHTransformingFrameProvider_Files_Test.swift */; };
 		7D1946FE195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */; };
 		7D1946FF195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */; };
 		7D47D652195FBAD10026E09C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D47D651195FBAD10026E09C /* AVFoundation.framework */; };
@@ -38,6 +39,7 @@
 		7D09169D1960E27E00776EE7 /* Mono_Wav_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Mono_Wav_Test.wav; sourceTree = "<group>"; };
 		7D09169E1960E27E00776EE7 /* Stereo_Pluck_Test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Stereo_Pluck_Test.wav; sourceTree = "<group>"; };
 		7D0916A31960F54900776EE7 /* JHAVAudioFileFrameProvider_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHAVAudioFileFrameProvider_Test.swift; sourceTree = "<group>"; };
+		7D0916A51961010A00776EE7 /* JHTransformingFrameProvider_Files_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHTransformingFrameProvider_Files_Test.swift; sourceTree = "<group>"; };
 		7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHAudioFrameProvider.swift; sourceTree = "<group>"; };
 		7D47D651195FBAD10026E09C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7D74D598195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHWaveformTransformingFrameProvider_Test.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				7D9BF7DA195F4CD400BBE630 /* Supporting Files */,
 				7D74D598195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift */,
 				7D0916A31960F54900776EE7 /* JHAVAudioFileFrameProvider_Test.swift */,
+				7D0916A51961010A00776EE7 /* JHTransformingFrameProvider_Files_Test.swift */,
 			);
 			path = JHWaveform2Tests;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				7D9BF7E8195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */,
 				7D0916A41960F54900776EE7 /* JHAVAudioFileFrameProvider_Test.swift in Sources */,
 				7D74D59C195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift in Sources */,
+				7D0916A61961010B00776EE7 /* JHTransformingFrameProvider_Files_Test.swift in Sources */,
 				7D1946FF195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
