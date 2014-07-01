@@ -67,7 +67,7 @@
 		7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHWaveform2.h; sourceTree = "<group>"; };
 		7D9BF7D5195F4CD400BBE630 /* JHWaveform2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JHWaveform2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9BF7DB195F4CD400BBE630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JHAudioWaveformView.swift; path = Views/JHAudioWaveformView.swift; sourceTree = "<group>"; };
+		7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JHAudioWaveformView.swift; path = ../JHWaveform2/Views/JHAudioWaveformView.swift; sourceTree = "<group>"; };
 		7DE4BAC51961027600860377 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,7 +157,6 @@
 				7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */,
 				7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */,
 				7D74D59A195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift */,
-				7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */,
 				7D9BF7CD195F4CD400BBE630 /* Supporting Files */,
 			);
 			path = JHWaveform2;
@@ -174,6 +173,7 @@
 		7D9BF7D9195F4CD400BBE630 /* JHWaveform2Tests */ = {
 			isa = PBXGroup;
 			children = (
+				7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */,
 				7D0916A21960E28400776EE7 /* Test WAV Files */,
 				7D9BF7DA195F4CD400BBE630 /* Supporting Files */,
 				7D74D598195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift */,
@@ -581,6 +581,7 @@
 				7D002F871961237F00F5F6DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D9BF7C4195F4CD400BBE630 /* Build configuration list for PBXProject "JHWaveform2" */ = {
 			isa = XCConfigurationList;

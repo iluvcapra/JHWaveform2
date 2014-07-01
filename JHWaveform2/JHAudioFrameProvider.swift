@@ -53,17 +53,17 @@ class JHFloatArrayFrameProvider : JHAudioFrameProvider {
 }
 
 func resampleArray(samples: Float[], length l: Int) -> Float[] {
-    var retArray = Float[](count: l, repeatedValue: 0.0)
+    ///var retArray = Float[](count: l, repeatedValue: 0.0)
     let boundsRange = 0..samples.count
     let stride = samples.count / l
     let ranges = StridedRangeGenerator(boundsRange,stride: stride)
     
-    var num = 0
-    for i in ranges {
-        let end = min(i+stride, boundsRange.endIndex + 1)
-        let theRange = Range(start: i, end: end)
+    
+    var retArray: Float[] = Array(ranges).map {
+        let end = min($0+stride, boundsRange.endIndex + 1)
+        let theRange = Range(start: $0, end: end)
         let subArray = samples[theRange]
-        retArray[ num++ ] = maxElement(subArray)
+        return maxElement(subArray)
     }
     
     return retArray
@@ -75,7 +75,7 @@ class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
     var sourceToTargetTransform:    NSAffineTransform
     var targetToSourceTransform:    NSAffineTransform {
     get {
-        let retVal = sourceToTargetTransform
+        var retVal = sourceToTargetTransform.copy() as NSAffineTransform
         retVal.invert()
         return retVal
     }

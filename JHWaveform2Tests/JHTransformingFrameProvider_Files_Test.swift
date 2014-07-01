@@ -25,6 +25,33 @@ class JHTransformingFrameProvider_Files_Test: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    func testStereo() {
+        let audioFile = AVAudioFile(forReading: stereoPluck_url,
+            commonFormat: AVAudioCommonFormat.PCMFormatFloat32,
+            interleaved: false,
+            error: nil)
+        var chans = [0,1]
+        let nativeProviders: JHAVAudioFileFrameProvider[] = chans.map {
+            return JHAVAudioFileFrameProvider(file: audioFile, channelIndex: $0)
+        }
+        
+        let targetBufferSize = 500
+        
+        let transformingProviders: JHWaveformTransformingFrameProvider[] = nativeProviders.map {
+            var xform = NSAffineTransform()
+            xform.scaleXBy(CGFloat(targetBufferSize) / CGFloat($0.frameCount), yBy: 1.0)
+            return JHWaveformTransformingFrameProvider($0, transform:xform )
+        }
+        
+        
+        let buffers: Float[][] = transformingProviders.map {
+            return $0.readFrames( NSMakeRange(0, targetBufferSize) )
+        }
+        
+        println(buffers)
+        
+    }
 
     func testDTMF() {
         let audioFile = AVAudioFile(forReading: monoDTMF_url,
@@ -36,7 +63,7 @@ class JHTransformingFrameProvider_Files_Test: XCTestCase {
         let targetBufferSize = 20
         var xform = NSAffineTransform()
         
-        xform.scaleXBy( CGFloat(targetBufferSize) / CGFloat(nativeFrameProvider.frameCount), yBy: 0.01)
+        xform.scaleXBy( CGFloat(targetBufferSize) / CGFloat(nativeFrameProvider.frameCount), yBy: 100.0)
         
         let transformingProvider = JHWaveformTransformingFrameProvider(nativeFrameProvider,transform: xform)
         
