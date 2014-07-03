@@ -10,29 +10,55 @@ import Cocoa
 
 class JHAudioWaveformView: NSView {
     
-    var waveformBezierPath: NSBezierPath? = nil {
+    var waveformPoints: NSPoint[] {
     didSet {
         self.setNeedsDisplayInRect(self.bounds)
     }
     }
     
-    var transformer:        JHWaveformTransformingFrameProvider?
+    var waveformBezierPath: NSBezierPath {
+    get {
+        var path = NSBezierPath()
+        path.moveToPoint(NSPoint(x: 0.0,y: 0.0))
+        var points = self.waveformPoints
+        path.appendBezierPathWithPoints( &points, count: points.count)
+        path.moveToPoint(NSPoint(x:CGFloat(self.bounds.width), y: 0.0))
+        return path
+    }
+    }
+    
+   // var transformer:        JHWaveformTransformingFrameProvider?
     var frameProvider:      JHAudioFrameProvider? {
     
     didSet {
+        clearWaveformPoints()
         if let fp = frameProvider {
             let xform = NSAffineTransform()
             xform.scaleXBy(self.bounds.width / CGFloat(fp.frameCount), yBy: self.bounds.height )
-            transformer = JHWaveformTransformingFrameProvider(fp,transform: xform.copy() as NSAffineTransform!)
-            calculateWaveformBezierPath()
-        } else {
-            transformer = nil
+            let transformer = JHWaveformTransformingFrameProvider(fp,transform: xform.copy() as NSAffineTransform!)
+            readFramesFromProvider(transformer)
         }
+        
     }
     }
     
     init(frame: NSRect) {
+        waveformPoints = NSPoint[]()
         super.init(frame: frame)
+        clearWaveformPoints()
+    }
+    
+    func readFramesFromProvider(provider : JHAudioFrameProvider) {
+        let frames = provider.readFrames(NSMakeRange(0, provider.frameCount))
+        self.waveformPoints = self.pointsForFrames(frames, start: 0)
+    }
+    
+    func clearWaveformPoints()->() {
+        waveformPoints = NSPoint[]()
+        waveformPoints.reserveCapacity( Int(self.bounds.width) )
+        for i in 0..Int(self.bounds.width) {
+            waveformPoints.append( NSPoint( x: CGFloat(i) , y: 0.0 ) )
+        }
     }
     
     func pointsForFrames(frames: Float[], start : Int) -> NSPoint[] {
@@ -44,42 +70,18 @@ class JHAudioWaveformView: NSView {
         }
         return retVal
     }
-
-    func calculateWaveformBezierPath() -> Void {
-        if let fp = transformer {
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                
-                let samples = fp.readFrames(NSMakeRange(0, fp.frameCount))
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    var path = NSBezierPath()
-                    path.moveToPoint(NSPoint(x: 0.0,y: 0.0))
-                    var points = self.pointsForFrames(samples, start: 0)
-                    path.appendBezierPathWithPoints( &points, count: points.count)
-                    path.moveToPoint(NSPoint(x:CGFloat(self.bounds.width), y: 0.0))
-                    
-                    self.waveformBezierPath = path
-                }
-            }
-        } else {
-            waveformBezierPath = nil
-        }
-        
-    }
     
     func drawWaveform(dirtyRect : NSRect) -> Void {
-        if let path = waveformBezierPath {
-            NSGraphicsContext.saveGraphicsState()
-            
-            NSColor.blackColor().setStroke()
-            NSColor.grayColor().setFill()
-            
-            path.fill()
-            path.stroke()
-            
-            NSGraphicsContext.restoreGraphicsState()
-        }
+        
+        NSGraphicsContext.saveGraphicsState()
+        
+        NSColor.blackColor().setStroke()
+        NSColor.grayColor().setFill()
+        
+        waveformBezierPath.fill()
+        waveformBezierPath.stroke()
+        
+        NSGraphicsContext.restoreGraphicsState()
     }
     
     func drawBackground(dirtyRect: NSRect) -> Void {
@@ -94,9 +96,13 @@ class JHAudioWaveformView: NSView {
     override func drawRect(dirtyRect: NSRect) -> Void {
         super.drawRect(dirtyRect)
         drawBackground(dirtyRect)
-        if transformer {
+        if frameProvider {
             drawWaveform(dirtyRect)
+        } else {
+            
         }
+        
+        
     }
     
 }
