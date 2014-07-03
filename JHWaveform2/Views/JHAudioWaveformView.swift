@@ -29,6 +29,7 @@ class JHAudioWaveformView: NSView {
     }
     }
     
+    // FIXME: need provisions for cancelling a read operation in-flight, maybe should use NSOperationQueue
     var providerQueue:      dispatch_queue_t
     
     var frameProvider:      JHAudioFrameProvider? {
