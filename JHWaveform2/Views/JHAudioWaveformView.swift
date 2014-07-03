@@ -49,15 +49,16 @@ class JHAudioWaveformView: NSView {
         if let fp = transformer {
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                
                 let samples = fp.readFrames(NSMakeRange(0, fp.frameCount))
                 
-                var path = NSBezierPath()
-                path.moveToPoint(NSPoint(x: 0.0,y: 0.0))
-                var points = self.pointsForFrames(samples, start: 0)
-                path.appendBezierPathWithPoints( &points, count: points.count)
-                path.lineToPoint(NSPoint(x:CGFloat(self.bounds.width), y: 0.0))
-                
                 dispatch_async(dispatch_get_main_queue()) {
+                    var path = NSBezierPath()
+                    path.moveToPoint(NSPoint(x: 0.0,y: 0.0))
+                    var points = self.pointsForFrames(samples, start: 0)
+                    path.appendBezierPathWithPoints( &points, count: points.count)
+                    path.moveToPoint(NSPoint(x:CGFloat(self.bounds.width), y: 0.0))
+                    
                     self.waveformBezierPath = path
                 }
             }
