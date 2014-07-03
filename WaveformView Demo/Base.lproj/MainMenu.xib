@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="101000" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.21"/>
     </dependencies>
     <objects>
@@ -673,13 +674,16 @@
             <rect key="contentRect" x="335" y="390" width="480" height="240"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
             <value key="minSize" type="size" width="480" height="240"/>
-            <value key="maxSize" type="size" width="480" height="240"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button appearanceType="aqua" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1b3-fw-Q7r">
+                    <button appearanceType="aqua" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1b3-fw-Q7r">
                         <rect key="frame" x="346" y="13" width="120" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="108" id="UVL-LP-GI0"/>
+                            <constraint firstAttribute="height" constant="21" id="Vqb-CB-xJ2"/>
+                        </constraints>
                         <buttonCell key="cell" type="push" title="Select File...." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="56q-12-tLB">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -688,10 +692,18 @@
                             <action selector="selectAudioFile:" target="Voe-Tx-rLC" id="FGg-9W-RFS"/>
                         </connections>
                     </button>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNO-75-Zf3" customClass="JHAudioWaveformView" customModule="JHWaveform2">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="NNO-75-Zf3" customClass="JHAudioWaveformView" customModule="JHWaveform2">
                         <rect key="frame" x="20" y="61" width="440" height="163"/>
                     </customView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="1b3-fw-Q7r" firstAttribute="top" secondItem="NNO-75-Zf3" secondAttribute="bottom" constant="20" id="1IJ-gT-VXm"/>
+                    <constraint firstAttribute="trailing" secondItem="1b3-fw-Q7r" secondAttribute="trailing" constant="20" id="3aG-yV-LzZ"/>
+                    <constraint firstItem="NNO-75-Zf3" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="16" id="3fr-cw-To3"/>
+                    <constraint firstAttribute="trailing" secondItem="NNO-75-Zf3" secondAttribute="trailing" constant="20" id="f64-vy-gfp"/>
+                    <constraint firstAttribute="bottom" secondItem="1b3-fw-Q7r" secondAttribute="bottom" constant="20" id="pXr-kY-s2b"/>
+                    <constraint firstItem="NNO-75-Zf3" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="r76-WG-nlN"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="213" y="94"/>
         </window>
