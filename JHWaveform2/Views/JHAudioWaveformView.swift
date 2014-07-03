@@ -10,6 +10,8 @@ import Cocoa
 
 class JHAudioWaveformView: NSView {
     
+    let frameBlockSize = 50
+    
     var waveformPoints: NSPoint[] {
     didSet {
         self.setNeedsDisplayInRect(self.bounds)
@@ -22,14 +24,14 @@ class JHAudioWaveformView: NSView {
         path.moveToPoint(NSPoint(x: 0.0,y: 0.0))
         var points = self.waveformPoints
         path.appendBezierPathWithPoints( &points, count: points.count)
-        path.moveToPoint(NSPoint(x:CGFloat(self.bounds.width), y: 0.0))
+        path.lineToPoint(NSPoint(x:CGFloat(self.bounds.width), y: 0.0))
         return path
     }
     }
     
-   // var transformer:        JHWaveformTransformingFrameProvider?
-    var frameProvider:      JHAudioFrameProvider? {
+    var providerQueue:      dispatch_queue_t
     
+    var frameProvider:      JHAudioFrameProvider? {
     didSet {
         clearWaveformPoints()
         if let fp = frameProvider {
@@ -44,13 +46,31 @@ class JHAudioWaveformView: NSView {
     
     init(frame: NSRect) {
         waveformPoints = NSPoint[]()
+        providerQueue = dispatch_queue_create("wv", DISPATCH_QUEUE_SERIAL)
         super.init(frame: frame)
         clearWaveformPoints()
     }
     
     func readFramesFromProvider(provider : JHAudioFrameProvider) {
-        let frames = provider.readFrames(NSMakeRange(0, provider.frameCount))
-        self.waveformPoints = self.pointsForFrames(frames, start: 0)
+        for i in (0..provider.frameCount).by(frameBlockSize) {
+            dispatch_async(providerQueue) {
+                
+                let frames = provider.readFrames(NSMakeRange(i, self.frameBlockSize))
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    let points = self.pointsForFrames(frames, start: i)
+                    
+                    for j in 0..points.count {
+                        if i+j < self.waveformPoints.count {
+                            self.waveformPoints[i+j] = points[j]
+                        }
+                    }
+                }
+            }
+            
+
+        }
+
     }
     
     func clearWaveformPoints()->() {
