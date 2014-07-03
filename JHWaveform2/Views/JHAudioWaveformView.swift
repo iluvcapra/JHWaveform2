@@ -34,6 +34,16 @@ class JHAudioWaveformView: NSView {
     init(frame: NSRect) {
         super.init(frame: frame)
     }
+    
+    func pointsForFrames(frames: Float[], start : Int) -> NSPoint[] {
+        var retVal = NSPoint[]()
+        retVal.reserveCapacity(frames.count)
+        for (i, frame) in enumerate(frames) {
+            retVal.append( NSPoint(x: CGFloat(i+start), y: CGFloat(frame) ) )
+            
+        }
+        return retVal
+    }
 
     func calculateWaveformBezierPath() -> Void {
         if let fp = transformer {
@@ -43,21 +53,14 @@ class JHAudioWaveformView: NSView {
                 
                 var path = NSBezierPath()
                 path.moveToPoint(NSPoint(x: 0.0,y: 0.0))
-                for (i, sample) in enumerate(samples) {
-                    let point = CGPoint(x: CGFloat(i), y: CGFloat(sample) )
-                    path.lineToPoint(point)
-                }
+                var points = self.pointsForFrames(samples, start: 0)
+                path.appendBezierPathWithPoints( &points, count: points.count)
                 path.lineToPoint(NSPoint(x:CGFloat(self.bounds.width), y: 0.0))
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     self.waveformBezierPath = path
                 }
-                
             }
-            
-
-            
-            
         } else {
             waveformBezierPath = nil
         }
