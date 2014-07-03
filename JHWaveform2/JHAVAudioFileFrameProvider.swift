@@ -26,7 +26,8 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
     }
     
     func readFrames(range: NSRange) -> Float[] {
-        var retVal = Float[](count: range.length, repeatedValue: 0.0)
+      //  var retVal = Float[]()
+      //  retVal.reserveCapacity(range.length)
         
         audioFile.framePosition = AVAudioFramePosition(range.location)
         var format = audioFile.processingFormat
@@ -36,11 +37,11 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
         
         var channelData = buf.floatChannelData[channelIndex]
         
-        for (var i = 0; i < self.frameCount; i++){
-            retVal[i] = channelData[i]
-        }
-        // there must be some faster way of doing this...
-        return retVal
+        var r = UnsafeArray<Float>(start: channelData, length: range.length)
+        
+        return Array<Float>(r)
+        // this does a big copy
+        
     }
     
 }
