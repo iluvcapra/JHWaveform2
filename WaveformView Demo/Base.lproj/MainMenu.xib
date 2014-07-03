@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A261i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <deployment defaultVersion="101000" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.21"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -13,6 +14,7 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WaveformView_Demo" customModuleProvider="target">
             <connections>
+                <outlet property="waveformView" destination="NNO-75-Zf3" id="CJr-ir-bID"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="teP-nJ-SdS"/>
             </connections>
         </customObject>
@@ -677,9 +679,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bgi-lY-mj1" customClass="JHAudioWaveformView" customModule="JHWaveform2">
-                        <rect key="frame" x="20" y="61" width="440" height="164"/>
-                    </customView>
                     <button appearanceType="aqua" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1b3-fw-Q7r">
                         <rect key="frame" x="346" y="13" width="120" height="32"/>
                         <buttonCell key="cell" type="push" title="Select File...." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="56q-12-tLB">
@@ -690,9 +689,12 @@
                             <action selector="selectAudioFile:" target="Voe-Tx-rLC" id="FGg-9W-RFS"/>
                         </connections>
                     </button>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNO-75-Zf3" customClass="JHAudioWaveformView" customModule="JHWaveform2">
+                        <rect key="frame" x="20" y="61" width="440" height="163"/>
+                    </customView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="213" y="90"/>
+            <point key="canvasLocation" x="213" y="94"/>
         </window>
     </objects>
 </document>
