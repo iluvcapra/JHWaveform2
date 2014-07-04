@@ -14,6 +14,9 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
     var audioFile: AVAudioFile
     var audioFileQueue = dispatch_queue_create("JHAVAudioFileFrameProvider", DISPATCH_QUEUE_SERIAL)
     
+    var cacheMultichannelReads: Bool = false
+    var multichannelReadCache: Array<(channel:Int,range:NSRange,data:Float[])> = []
+    
     var channelCount: Int {
     get {
         return Int(audioFile.processingFormat.channelCount)
@@ -31,15 +34,9 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
         
         self.audioFile = AVAudioFile(forReading: fileURL, commonFormat: AVAudioCommonFormat.PCMFormatFloat32,
             interleaved: false, error: &error)
-        
-        
     }
     
-    func readFrames(range: NSRange) -> Float[] {
-        return readFrames(range, channel: 0)
-    }
-    
-    func readFrames(range: NSRange, channel: Int) -> Float[] {
+    func rawReadFrames(range: NSRange, channel: Int) -> Float[] {
         let channelIndex = min(channel,self.channelCount)
         let getRange = NSIntersectionRange(range, NSMakeRange(0, self.frameCount))
         
@@ -54,11 +51,16 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
             
             var channelData = buf.floatChannelData[channelIndex]
             
-            var r = UnsafeArray<Float>(start: channelData, length: range.length)            
+            var r = UnsafeArray<Float>(start: channelData, length: range.length)
             retVal = Array(r)
         }
-
+        
         return retVal
+    }
+    
+    func readFrames(range: NSRange, channel: Int) -> Float[] {
+        
+        return rawReadFrames(range, channel: channel)
     }
     
 }

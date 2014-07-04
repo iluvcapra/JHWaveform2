@@ -61,7 +61,7 @@ class JHTransformingFrameProvider_Files_Test: XCTestCase {
         
         let transformingProvider = JHWaveformTransformingFrameProvider(nativeFrameProvider,transform: xform)
         
-        var buffer = transformingProvider.readFrames(NSMakeRange(0, targetBufferSize))
+        var buffer = transformingProvider.readFrames(NSMakeRange(0, targetBufferSize),channel: 0)
         
         let targetBufferShould = [
             80.0,   80.0,   80.0,   80.0,   80.0,

@@ -25,12 +25,10 @@ extension NSRange {
     }
 }
 
-
 protocol JHAudioFrameProvider {
     
     var frameCount: Int  { get }
     var channelCount: Int { get }
-    func readFrames(range: NSRange) -> Float[]
     func readFrames(range: NSRange, channel: Int) -> Float[]
 }
 
@@ -46,10 +44,6 @@ class JHFloatArrayFrameProvider : JHAudioFrameProvider {
     
     init(_ floatData: Float[] ) {
         dataBuf = floatData.copy()
-    }
-    
-    func readFrames(range: NSRange) -> Float[] {
-        return readFrames(range, channel: 0)
     }
     
     func readFrames(range: NSRange, channel: Int) -> Float[] {
@@ -115,10 +109,6 @@ class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
             sourceToTargetTransform = NSAffineTransform()
         }
         
-    }
-
-    func readFrames(range: NSRange) -> Float[] {
-        return readFrames(range, channel: 0)
     }
     
     func readFrames(range: NSRange, channel: Int ) -> Float[] {

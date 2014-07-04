@@ -61,7 +61,7 @@ class JHWaveformTransformingFrameProvider_Test: XCTestCase {
         let testXformer = JHWaveformTransformingFrameProvider(testSrc, transform: xform)
         
         XCTAssertEqual(testXformer.frameCount, 3, "Frame count is incorrect")
-        let coalescedData = testXformer.readFrames(NSMakeRange(0, 3))
+        let coalescedData = testXformer.readFrames(NSMakeRange(0, 3),channel: 0)
         XCTAssertEqualObjects(coalescedData, [1.0,2.0,3.0], "Coalesced data is incorrect")
     }
     
@@ -70,7 +70,7 @@ class JHWaveformTransformingFrameProvider_Test: XCTestCase {
         var xform = NSAffineTransform()
         xform.scaleXBy(1.0, yBy: 100.0)
         let testXformer = JHWaveformTransformingFrameProvider(testSrc, transform: xform)
-        let coalescedData = testXformer.readFrames(NSMakeRange(0, 4))
+        let coalescedData = testXformer.readFrames(NSMakeRange(0, 4),channel: 0)
         XCTAssertEqualObjects(coalescedData, [300.0, -200.0, 300.0,500.0], "Coalecsed Y scaled data is incorrect")
 
     }
@@ -88,7 +88,7 @@ class JHWaveformTransformingFrameProvider_Test: XCTestCase {
         let testXformer = JHWaveformTransformingFrameProvider(testSrc, transform: xform)
         XCTAssertEqual(testXformer.frameCount, 10, "")
         
-        let coalescedData = testXformer.readFrames(NSMakeRange(0,10))
+        let coalescedData = testXformer.readFrames(NSMakeRange(0,10),channel: 0)
         XCTAssertEqual(coalescedData.count, 10)
     }
     
