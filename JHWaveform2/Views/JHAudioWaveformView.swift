@@ -60,6 +60,10 @@ class JHAudioWaveformView: NSView {
     }
     }
     
+    var fillColor: NSColor = NSColor.selectedControlTextColor()
+    var strokeColor: NSColor = NSColor.selectedControlTextColor()
+    var backgroundColor: NSColor = NSColor.controlBackgroundColor()
+    
     var channel: Int = 0 {
     didSet {
         updateWaveform()
@@ -120,8 +124,8 @@ class JHAudioWaveformView: NSView {
         
         NSGraphicsContext.saveGraphicsState()
         
-        NSColor.blackColor().setStroke()
-        NSColor.grayColor().setFill()
+        self.strokeColor.setStroke()
+        self.fillColor.setFill()
         
         waveformBezierPath.fill()
         waveformBezierPath.stroke()
@@ -132,7 +136,7 @@ class JHAudioWaveformView: NSView {
     func drawBackground(dirtyRect: NSRect) -> Void {
         NSGraphicsContext.saveGraphicsState()
         
-        NSColor.whiteColor().setFill()
+        self.backgroundColor.setFill()
         NSBezierPath.fillRect(dirtyRect)
         
         NSGraphicsContext.restoreGraphicsState()
