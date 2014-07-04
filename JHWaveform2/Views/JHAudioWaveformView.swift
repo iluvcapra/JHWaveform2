@@ -63,8 +63,8 @@ class JHAudioWaveformView: NSView {
     }
     
     func readFramesFromProvider(provider : JHAudioFrameProvider) {
-        for i in (0..provider.frameCount).by(frameBlockSize) {
-            dispatch_async(providerQueue) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            for i in (0..provider.frameCount).by(self.frameBlockSize) {
                 
                 let frames = provider.readFrames(NSMakeRange(i, self.frameBlockSize), channel: self.channel)
                 

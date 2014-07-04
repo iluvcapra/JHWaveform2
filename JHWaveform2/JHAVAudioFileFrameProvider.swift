@@ -12,6 +12,7 @@ import AVFoundation
 class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
 
     var audioFile: AVAudioFile
+    var audioFileQueue = dispatch_queue_create("JHAVAudioFileFrameProvider", DISPATCH_QUEUE_SERIAL)
     
     var channelCount: Int {
     get {
@@ -27,6 +28,7 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
     
     init(fileURL: NSURL) {
         var error : NSError? = nil
+        
         self.audioFile = AVAudioFile(forReading: fileURL, commonFormat: AVAudioCommonFormat.PCMFormatFloat32,
             interleaved: false, error: &error)
         
@@ -40,20 +42,22 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
     func readFrames(range: NSRange, channel: Int) -> Float[] {
         let channelIndex = min(channel,self.channelCount)
         let getRange = NSIntersectionRange(range, NSMakeRange(0, self.frameCount))
-
-        objc_sync_enter(self)
-        audioFile.framePosition = AVAudioFramePosition(range.location)
-        var format = audioFile.processingFormat
-        var buf = AVAudioPCMBuffer(PCMFormat: format, frameCapacity: AVAudioFrameCount(range.length) )
-        var error: NSError? = nil
-        audioFile.readIntoBuffer(buf, error: &error)
         
-        var channelData = buf.floatChannelData[channelIndex]
+        var retVal = Array<Float>()
         
-        var r = UnsafeArray<Float>(start: channelData, length: range.length)
-        objc_sync_exit(self)
+        dispatch_sync(audioFileQueue) {
+            self.audioFile.framePosition = AVAudioFramePosition(range.location)
+            var format = self.audioFile.processingFormat
+            var buf = AVAudioPCMBuffer(PCMFormat: format, frameCapacity: AVAudioFrameCount(range.length) )
+            var error: NSError? = nil
+            self.audioFile.readIntoBuffer(buf, error: &error)
+            
+            var channelData = buf.floatChannelData[channelIndex]
+            
+            var r = UnsafeArray<Float>(start: channelData, length: range.length)            
+            retVal = Array(r)
+        }
 
-        var retVal = Array(r)
         return retVal
     }
     
