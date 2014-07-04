@@ -29,9 +29,6 @@ class JHAudioWaveformView: NSView {
     }
     }
     
-    // FIXME: need provisions for cancelling a read operation in-flight, maybe should use NSOperationQueue
-    var providerQueue:      dispatch_queue_t
-    
     var channel: Int = 0 {
     didSet {
         updateWaveform()
@@ -47,7 +44,6 @@ class JHAudioWaveformView: NSView {
     
     init(frame: NSRect) {
         waveformPoints = NSPoint[]()
-        providerQueue = dispatch_queue_create("JHAudioWaveformView", DISPATCH_QUEUE_SERIAL)
         super.init(frame: frame)
         clearWaveformPoints()
     }
