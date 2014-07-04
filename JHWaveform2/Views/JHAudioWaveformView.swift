@@ -78,10 +78,7 @@ class JHAudioWaveformView: NSView {
                     }
                 }
             }
-            
-
         }
-
     }
     
     func clearWaveformPoints()->() {
