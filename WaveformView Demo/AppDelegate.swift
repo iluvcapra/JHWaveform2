@@ -36,7 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         })
-            
+    }
+    
+    @IBAction func cancelAction(sender: AnyObject?) {
+        self.waveformView.frameProvider = nil
     }
 
 

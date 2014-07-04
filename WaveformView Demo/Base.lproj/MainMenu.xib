@@ -695,11 +695,27 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="NNO-75-Zf3" customClass="JHAudioWaveformView" customModule="JHWaveform2">
                         <rect key="frame" x="20" y="61" width="440" height="163"/>
                     </customView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aF1-JK-oHE">
+                        <rect key="frame" x="264" y="13" width="83" height="32"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="neO-tI-uL6">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelAction:" target="Voe-Tx-rLC" id="Yrf-tg-rcr"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="1b3-fw-Q7r" firstAttribute="top" secondItem="NNO-75-Zf3" secondAttribute="bottom" constant="20" id="1IJ-gT-VXm"/>
                     <constraint firstAttribute="trailing" secondItem="1b3-fw-Q7r" secondAttribute="trailing" constant="20" id="3aG-yV-LzZ"/>
                     <constraint firstItem="NNO-75-Zf3" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="16" id="3fr-cw-To3"/>
+                    <constraint firstItem="1b3-fw-Q7r" firstAttribute="leading" secondItem="aF1-JK-oHE" secondAttribute="trailing" constant="11" id="By3-f5-7kL"/>
+                    <constraint firstAttribute="bottom" secondItem="aF1-JK-oHE" secondAttribute="bottom" constant="20" id="C5x-VS-MbQ"/>
+                    <constraint firstItem="aF1-JK-oHE" firstAttribute="top" secondItem="NNO-75-Zf3" secondAttribute="bottom" constant="20" id="aJA-ON-agJ"/>
                     <constraint firstAttribute="trailing" secondItem="NNO-75-Zf3" secondAttribute="trailing" constant="20" id="f64-vy-gfp"/>
                     <constraint firstAttribute="bottom" secondItem="1b3-fw-Q7r" secondAttribute="bottom" constant="20" id="pXr-kY-s2b"/>
                     <constraint firstItem="NNO-75-Zf3" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="r76-WG-nlN"/>
