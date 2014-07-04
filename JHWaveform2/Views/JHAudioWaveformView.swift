@@ -32,15 +32,15 @@ class JHAudioWaveformView: NSView {
     // FIXME: need provisions for cancelling a read operation in-flight, maybe should use NSOperationQueue
     var providerQueue:      dispatch_queue_t
     
+    var channel: Int = 0 {
+    didSet {
+        updateWaveform()
+    }
+    }
+    
     var frameProvider:      JHAudioFrameProvider? {
     didSet {
-        clearWaveformPoints()
-        if let fp = frameProvider {
-            let xform = NSAffineTransform()
-            xform.scaleXBy(self.bounds.width / CGFloat(fp.frameCount), yBy: self.bounds.height )
-            let transformer = JHWaveformTransformingFrameProvider(fp,transform: xform.copy() as NSAffineTransform!)
-            readFramesFromProvider(transformer)
-        }
+        updateWaveform()
         
     }
     }
@@ -52,11 +52,21 @@ class JHAudioWaveformView: NSView {
         clearWaveformPoints()
     }
     
+    func updateWaveform()->() {
+        clearWaveformPoints()
+        if let fp = frameProvider {
+            let xform = NSAffineTransform()
+            xform.scaleXBy(self.bounds.width / CGFloat(fp.frameCount), yBy: self.bounds.height )
+            let transformer = JHWaveformTransformingFrameProvider(fp,transform: xform.copy() as NSAffineTransform!)
+            readFramesFromProvider(transformer)
+        }
+    }
+    
     func readFramesFromProvider(provider : JHAudioFrameProvider) {
         for i in (0..provider.frameCount).by(frameBlockSize) {
             dispatch_async(providerQueue) {
                 
-                let frames = provider.readFrames(NSMakeRange(i, self.frameBlockSize))
+                let frames = provider.readFrames(NSMakeRange(i, self.frameBlockSize), channel: self.channel)
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     let points = self.pointsForFrames(frames, start: i)
