@@ -20,7 +20,7 @@
 		7D1946FE195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */; };
 		7D1946FF195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */; };
 		7D47D652195FBAD10026E09C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D47D651195FBAD10026E09C /* AVFoundation.framework */; };
-		7D4ADAE4196736ED00C5D0C6 /* JHMultichannelWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4ADAE3196736ED00C5D0C6 /* JHMultichannelWaveformView.swift */; };
+		7D4ADAE61967379000C5D0C6 /* JHMultichannelWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4ADAE51967379000C5D0C6 /* JHMultichannelWaveformView.swift */; };
 		7D74D599195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D74D598195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift */; };
 		7D74D59B195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D74D59A195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift */; };
 		7D74D59C195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D74D59A195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift */; };
@@ -61,7 +61,7 @@
 		7D0916A51961010A00776EE7 /* JHTransformingFrameProvider_Files_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHTransformingFrameProvider_Files_Test.swift; sourceTree = "<group>"; };
 		7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHAudioFrameProvider.swift; sourceTree = "<group>"; };
 		7D47D651195FBAD10026E09C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		7D4ADAE3196736ED00C5D0C6 /* JHMultichannelWaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHMultichannelWaveformView.swift; sourceTree = "<group>"; };
+		7D4ADAE51967379000C5D0C6 /* JHMultichannelWaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHMultichannelWaveformView.swift; sourceTree = "<group>"; };
 		7D74D598195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHWaveformTransformingFrameProvider_Test.swift; sourceTree = "<group>"; };
 		7D74D59A195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHAVAudioFileFrameProvider.swift; sourceTree = "<group>"; };
 		7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JHWaveform2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,9 +158,9 @@
 			children = (
 				7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */,
 				7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */,
-				7D4ADAE3196736ED00C5D0C6 /* JHMultichannelWaveformView.swift */,
 				7D1946FD195F97E600BFAC53 /* JHAudioFrameProvider.swift */,
 				7D74D59A195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift */,
+				7D4ADAE51967379000C5D0C6 /* JHMultichannelWaveformView.swift */,
 				7D9BF7CD195F4CD400BBE630 /* Supporting Files */,
 			);
 			path = JHWaveform2;
@@ -348,7 +348,7 @@
 			files = (
 				7D74D59B195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift in Sources */,
 				7D9BF7E7195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */,
-				7D4ADAE4196736ED00C5D0C6 /* JHMultichannelWaveformView.swift in Sources */,
+				7D4ADAE61967379000C5D0C6 /* JHMultichannelWaveformView.swift in Sources */,
 				7D1946FE195F97E600BFAC53 /* JHAudioFrameProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
