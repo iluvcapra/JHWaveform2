@@ -40,6 +40,8 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
     func readFrames(range: NSRange, channel: Int) -> Float[] {
         let channelIndex = min(channel,self.channelCount)
         let getRange = NSIntersectionRange(range, NSMakeRange(0, self.frameCount))
+
+        objc_sync_enter(self)
         audioFile.framePosition = AVAudioFramePosition(range.location)
         var format = audioFile.processingFormat
         var buf = AVAudioPCMBuffer(PCMFormat: format, frameCapacity: AVAudioFrameCount(range.length) )
@@ -49,8 +51,10 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
         var channelData = buf.floatChannelData[channelIndex]
         
         var r = UnsafeArray<Float>(start: channelData, length: range.length)
-        
-        return Array<Float>(r)
+        objc_sync_exit(self)
+
+        var retVal = Array(r)
+        return retVal
     }
     
 }
