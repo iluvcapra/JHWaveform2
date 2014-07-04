@@ -53,7 +53,6 @@ class JHFloatArrayFrameProvider : JHAudioFrameProvider {
 }
 
 func resampleArray(samples: Float[], length l: Int) -> Float[] {
-    ///var retArray = Float[](count: l, repeatedValue: 0.0)
     let boundsRange = 0..samples.count
     let stride = samples.count / l
     let ranges = StridedRangeGenerator(boundsRange,stride: stride)

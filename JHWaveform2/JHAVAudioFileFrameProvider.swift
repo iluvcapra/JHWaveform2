@@ -26,9 +26,6 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
     }
     
     func readFrames(range: NSRange) -> Float[] {
-      //  var retVal = Float[]()
-      //  retVal.reserveCapacity(range.length)
-        
         audioFile.framePosition = AVAudioFramePosition(range.location)
         var format = audioFile.processingFormat
         var buf = AVAudioPCMBuffer(PCMFormat: format, frameCapacity: AVAudioFrameCount(range.length) )
@@ -40,8 +37,6 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
         var r = UnsafeArray<Float>(start: channelData, length: range.length)
         
         return Array<Float>(r)
-        // this does a big copy
-        
     }
     
 }
