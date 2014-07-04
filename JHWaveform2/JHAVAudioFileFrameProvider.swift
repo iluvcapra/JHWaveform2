@@ -14,7 +14,6 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
     var audioFile: AVAudioFile
     var audioFileQueue = dispatch_queue_create("JHAVAudioFileFrameProvider", DISPATCH_QUEUE_SERIAL)
     
-    var cacheMultichannelReads: Bool = false
     var multichannelReadCache: Array<(channel:Int,range:NSRange,data:Float[])> = []
     
     var channelCount: Int {
