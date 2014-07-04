@@ -1,0 +1,13 @@
+//
+//  JHMultichannelWaveformView.swift
+//  JHWaveform2
+//
+//  Created by Jamie Hardt on 7/4/14.
+//  Copyright (c) 2014 Jamie Hardt. All rights reserved.
+//
+
+import Cocoa
+
+class JHMultichannelWaveformView: NSObject {
+
+}
