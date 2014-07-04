@@ -47,7 +47,7 @@ class JHAudioWaveformView: NSView {
     
     init(frame: NSRect) {
         waveformPoints = NSPoint[]()
-        providerQueue = dispatch_queue_create("wv", DISPATCH_QUEUE_SERIAL)
+        providerQueue = dispatch_queue_create("JHAudioWaveformView", DISPATCH_QUEUE_SERIAL)
         super.init(frame: frame)
         clearWaveformPoints()
     }
