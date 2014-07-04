@@ -8,9 +8,40 @@
 
 import Cocoa
 
-class JHAudioWaveformView: NSView {
+class JHAudioWaveformReadOperation : NSOperation {
+    var provider: JHAudioFrameProvider
+    var frameBlockSize: Int
+    var view: JHAudioWaveformView
     
-    let frameBlockSize = 50
+    init(_ provider: JHAudioFrameProvider, blockSize: Int, view: JHAudioWaveformView) {
+        self.provider = provider
+        self.frameBlockSize = blockSize
+        self.view = view
+    }
+    
+    override func main() {
+        for i in (0..provider.frameCount).by(self.frameBlockSize) {
+            if !self.cancelled {
+                let frames = provider.readFrames(NSMakeRange(i, self.frameBlockSize), channel: view.channel)
+                
+                if !self.cancelled {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let points = self.view.pointsForFrames(frames, start: i)
+                        
+                        for j in 0..points.count {
+                            if i+j < self.view.waveformPoints.count {
+                                self.view.waveformPoints[i+j] = points[j]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+class JHAudioWaveformView: NSView {
     
     var waveformPoints: NSPoint[] {
     didSet {
@@ -35,20 +66,24 @@ class JHAudioWaveformView: NSView {
     }
     }
     
-    var frameProvider:      JHAudioFrameProvider? {
+    var frameProvider: JHAudioFrameProvider? {
     didSet {
         updateWaveform()
         
     }
     }
     
+    var readOperationQueue = NSOperationQueue()
+    
     init(frame: NSRect) {
         waveformPoints = NSPoint[]()
         super.init(frame: frame)
         clearWaveformPoints()
+        readOperationQueue.maxConcurrentOperationCount = 1
     }
     
     func updateWaveform()->() {
+        readOperationQueue.cancelAllOperations()
         clearWaveformPoints()
         if let fp = frameProvider {
             let xform = NSAffineTransform()
@@ -59,22 +94,8 @@ class JHAudioWaveformView: NSView {
     }
     
     func readFramesFromProvider(provider : JHAudioFrameProvider) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            for i in (0..provider.frameCount).by(self.frameBlockSize) {
-                
-                let frames = provider.readFrames(NSMakeRange(i, self.frameBlockSize), channel: self.channel)
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    let points = self.pointsForFrames(frames, start: i)
-                    
-                    for j in 0..points.count {
-                        if i+j < self.waveformPoints.count {
-                            self.waveformPoints[i+j] = points[j]
-                        }
-                    }
-                }
-            }
-        }
+        let readOp = JHAudioWaveformReadOperation(provider,blockSize: 50,view: self)
+        readOperationQueue.addOperation(readOp)
     }
     
     func clearWaveformPoints()->() {
