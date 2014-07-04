@@ -43,6 +43,11 @@ class JHAudioWaveformReadOperation : NSOperation {
 
 class JHAudioWaveformView: NSView {
     
+    enum WaveformStyle {
+        case Rectified
+        case Bilateral
+    }
+    
     var waveformPoints: NSPoint[] {
     didSet {
         self.setNeedsDisplayInRect(self.bounds)
@@ -54,8 +59,28 @@ class JHAudioWaveformView: NSView {
         var path = NSBezierPath()
         path.moveToPoint(NSPoint(x: 0.0,y: 0.0))
         var points = self.waveformPoints
+        
         path.appendBezierPathWithPoints( &points, count: points.count)
-        path.lineToPoint(NSPoint(x:CGFloat(self.waveformPoints.count), y: 0.0))
+        
+        switch waveformStyle {
+        case .Rectified:
+            
+            path.lineToPoint(NSPoint(x:CGFloat(self.waveformPoints.count), y: 0.0))
+
+        case .Bilateral:
+            var invertAndFlip = NSAffineTransform()
+            invertAndFlip.translateXBy(-CGFloat(points.count), yBy: 0.0)
+            invertAndFlip.scaleXBy(-1.0, yBy: -1.0)
+            var invertedPath = path.copy() as NSBezierPath
+            invertedPath = invertAndFlip.transformBezierPath(invertedPath)
+            path.appendBezierPath(invertedPath)
+            
+            var scaleIntoBounds = NSAffineTransform()
+            scaleIntoBounds.translateXBy(0.0, yBy: self.bounds.height * 0.5)
+            scaleIntoBounds.scaleXBy(1.0, yBy: 0.5)
+            scaleIntoBounds.transformBezierPath(path)
+        }
+        
         return path
     }
     }
@@ -63,6 +88,12 @@ class JHAudioWaveformView: NSView {
     var fillColor: NSColor = NSColor.grayColor()
     var strokeColor: NSColor = NSColor.selectedControlTextColor()
     var backgroundColor: NSColor = NSColor.controlBackgroundColor()
+    
+    var waveformStyle: WaveformStyle = .Bilateral {
+    didSet {
+        self.setNeedsDisplayInRect(self.bounds)
+    }
+    }
     
     var channel: Int = 0 {
     didSet {

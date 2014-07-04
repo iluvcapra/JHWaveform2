@@ -707,6 +707,22 @@ Gw
                             <action selector="cancelAction:" target="Voe-Tx-rLC" id="Yrf-tg-rcr"/>
                         </connections>
                     </button>
+                    <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ii9-mh-XDs">
+                        <rect key="frame" x="18" y="17" width="125" height="26"/>
+                        <popUpButtonCell key="cell" type="push" title="Rectified" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="d9s-V1-CZB" id="vVl-qN-1dP">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="W88-NP-mqd">
+                                <items>
+                                    <menuItem title="Bilateral" id="L89-MT-SK6"/>
+                                    <menuItem title="Rectified" state="on" tag="1" id="d9s-V1-CZB"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="selectWaveformStyle:" target="Voe-Tx-rLC" id="kvb-x2-dvG"/>
+                        </connections>
+                    </popUpButton>
                 </subviews>
                 <constraints>
                     <constraint firstItem="1b3-fw-Q7r" firstAttribute="top" secondItem="NNO-75-Zf3" secondAttribute="bottom" constant="20" id="1IJ-gT-VXm"/>
@@ -714,8 +730,11 @@ Gw
                     <constraint firstItem="NNO-75-Zf3" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="16" id="3fr-cw-To3"/>
                     <constraint firstItem="1b3-fw-Q7r" firstAttribute="leading" secondItem="aF1-JK-oHE" secondAttribute="trailing" constant="11" id="By3-f5-7kL"/>
                     <constraint firstAttribute="bottom" secondItem="aF1-JK-oHE" secondAttribute="bottom" constant="20" id="C5x-VS-MbQ"/>
+                    <constraint firstItem="Ii9-mh-XDs" firstAttribute="top" secondItem="NNO-75-Zf3" secondAttribute="bottom" constant="20" id="Cv1-Ac-gTg"/>
                     <constraint firstItem="aF1-JK-oHE" firstAttribute="top" secondItem="NNO-75-Zf3" secondAttribute="bottom" constant="20" id="aJA-ON-agJ"/>
                     <constraint firstAttribute="trailing" secondItem="NNO-75-Zf3" secondAttribute="trailing" constant="20" id="f64-vy-gfp"/>
+                    <constraint firstAttribute="bottom" secondItem="Ii9-mh-XDs" secondAttribute="bottom" constant="20" id="nqL-LY-zNc"/>
+                    <constraint firstItem="Ii9-mh-XDs" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="pDv-zY-hXb"/>
                     <constraint firstAttribute="bottom" secondItem="1b3-fw-Q7r" secondAttribute="bottom" constant="20" id="pXr-kY-s2b"/>
                     <constraint firstItem="NNO-75-Zf3" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="r76-WG-nlN"/>
                 </constraints>

@@ -42,6 +42,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.waveformView.frameProvider = nil
     }
 
+    @IBAction func selectWaveformStyle(sender: AnyObject?) {
+        
+        if let menu = sender?.selectedItem as? NSMenuItem {
+            switch menu.tag {
+            case 0:
+                self.waveformView.waveformStyle = JHAudioWaveformView.WaveformStyle.Bilateral
+            case 1:
+                self.waveformView.waveformStyle = JHAudioWaveformView.WaveformStyle.Rectified
+            default:
+                self.waveformView.waveformStyle = JHAudioWaveformView.WaveformStyle.Rectified
+            }
+        }
+        
+        
+        
+    }
 
 }
 
