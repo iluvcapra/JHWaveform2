@@ -13,7 +13,7 @@ import AVFoundation
 class AppDelegate: NSObject, NSApplicationDelegate {
                             
     @IBOutlet var window        : NSWindow
-    @IBOutlet var waveformView  : JHAudioWaveformView
+    @IBOutlet var waveformView  : JHMultichannelWaveformView
     
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         //var fp = JHAVAudioFileFrameProvider(file: file, channelIndex: 0)

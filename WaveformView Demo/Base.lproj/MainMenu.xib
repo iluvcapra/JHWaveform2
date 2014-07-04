@@ -691,8 +691,11 @@
                             <action selector="selectAudioFile:" target="Voe-Tx-rLC" id="FGg-9W-RFS"/>
                         </connections>
                     </button>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="NNO-75-Zf3" customClass="JHAudioWaveformView" customModule="JHWaveform2">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="NNO-75-Zf3" customClass="JHMultichannelWaveformView" customModule="JHWaveform2">
                         <rect key="frame" x="20" y="61" width="440" height="163"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="440" id="yHp-Pi-KYD"/>
+                        </constraints>
                     </customView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aF1-JK-oHE">
                         <rect key="frame" x="264" y="13" width="83" height="32"/>
