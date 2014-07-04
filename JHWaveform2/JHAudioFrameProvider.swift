@@ -76,19 +76,7 @@ func resampleArray(samples: Float[], length l: Int) -> Float[] {
 }
 
 func powResampleArray(samples: Float[], length l: Int) -> Float[] {
-    let boundsRange = 0..samples.count
-    let stride = samples.count / l
-    let ranges = StridedRangeGenerator(boundsRange,stride: stride)
-    
-    
-    var retArray: Float[] = Array(ranges).map {
-        let end = min($0+stride, boundsRange.endIndex + 1)
-        let theRange = Range(start: $0, end: end)
-        let subArray = samples[theRange]
-        return powf( maxElement(subArray), 2.0 )
-    }
-    
-    return retArray
+    return resampleArray(samples, length: l).map { powf($0, 2.0) }
 }
 
 
