@@ -63,7 +63,7 @@ func resampleArray(samples: Float[], length l: Int) -> Float[] {
         let end = min($0+stride, boundsRange.endIndex + 1)
         let theRange = Range(start: $0, end: end)
         let subArray = samples[theRange]
-        return maxElement(subArray)
+        return powf( maxElement(subArray), 2.0 )
     }
     
     return retArray
