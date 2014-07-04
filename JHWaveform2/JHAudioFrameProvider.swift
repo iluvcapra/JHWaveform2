@@ -29,13 +29,16 @@ extension NSRange {
 protocol JHAudioFrameProvider {
     
     var frameCount: Int  { get }
-    
+    var channelCount: Int { get }
     func readFrames(range: NSRange) -> Float[]
+    func readFrames(range: NSRange, channel: Int) -> Float[]
 }
 
 class JHFloatArrayFrameProvider : JHAudioFrameProvider {
     
     var dataBuf : Array<Float>
+    
+    var channelCount = 1
     
     var frameCount: Int {
         return dataBuf.count
@@ -46,6 +49,10 @@ class JHFloatArrayFrameProvider : JHAudioFrameProvider {
     }
     
     func readFrames(range: NSRange) -> Float[] {
+        return readFrames(range, channel: 0)
+    }
+    
+    func readFrames(range: NSRange, channel: Int) -> Float[] {
         let s: Range<Int> = range.toRange()
         return Array(dataBuf[s])
     }
@@ -62,11 +69,28 @@ func resampleArray(samples: Float[], length l: Int) -> Float[] {
         let end = min($0+stride, boundsRange.endIndex + 1)
         let theRange = Range(start: $0, end: end)
         let subArray = samples[theRange]
+        return maxElement(subArray)
+    }
+    
+    return retArray
+}
+
+func powResampleArray(samples: Float[], length l: Int) -> Float[] {
+    let boundsRange = 0..samples.count
+    let stride = samples.count / l
+    let ranges = StridedRangeGenerator(boundsRange,stride: stride)
+    
+    
+    var retArray: Float[] = Array(ranges).map {
+        let end = min($0+stride, boundsRange.endIndex + 1)
+        let theRange = Range(start: $0, end: end)
+        let subArray = samples[theRange]
         return powf( maxElement(subArray), 2.0 )
     }
     
     return retArray
 }
+
 
 class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
     
@@ -77,6 +101,12 @@ class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
         var retVal = sourceToTargetTransform.copy() as NSAffineTransform
         retVal.invert()
         return retVal
+    }
+    }
+    
+    var channelCount: Int {
+    get{
+        return sourceProvider.channelCount
     }
     }
     
@@ -100,8 +130,12 @@ class JHWaveformTransformingFrameProvider: JHAudioFrameProvider {
     }
 
     func readFrames(range: NSRange) -> Float[] {
+        return readFrames(range, channel: 0)
+    }
+    
+    func readFrames(range: NSRange, channel: Int ) -> Float[] {
         let transformedRange = range.transformRangeAlongX(targetToSourceTransform)
-        let sourceSamples = sourceProvider.readFrames(transformedRange)
+        let sourceSamples = sourceProvider.readFrames(transformedRange, channel: channel)
         
         let xform = sourceToTargetTransform
         return resampleArray(sourceSamples,length:range.length).map {

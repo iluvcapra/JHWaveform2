@@ -12,7 +12,12 @@ import AVFoundation
 class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
 
     var audioFile: AVAudioFile
-    var channelIndex: Int
+    
+    var channelCount: Int {
+    get {
+        return Int(audioFile.processingFormat.channelCount)
+    }
+    }
     
     var frameCount: Int {
     get {
@@ -20,12 +25,21 @@ class JHAVAudioFileFrameProvider: JHAudioFrameProvider {
     }
     }
     
-    init(file: AVAudioFile, channelIndex: Int) {
-        self.audioFile = file
-        self.channelIndex = min(channelIndex, Int(audioFile.fileFormat.channelCount) - 1)
+    init(fileURL: NSURL) {
+        var error : NSError? = nil
+        self.audioFile = AVAudioFile(forReading: fileURL, commonFormat: AVAudioCommonFormat.PCMFormatFloat32,
+            interleaved: false, error: &error)
+        
+        
     }
     
     func readFrames(range: NSRange) -> Float[] {
+        return readFrames(range, channel: 0)
+    }
+    
+    func readFrames(range: NSRange, channel: Int) -> Float[] {
+        let channelIndex = min(channel,self.channelCount)
+        let getRange = NSIntersectionRange(range, NSMakeRange(0, self.frameCount))
         audioFile.framePosition = AVAudioFramePosition(range.location)
         var format = audioFile.processingFormat
         var buf = AVAudioPCMBuffer(PCMFormat: format, frameCapacity: AVAudioFrameCount(range.length) )

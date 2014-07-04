@@ -27,14 +27,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var p = NSOpenPanel()
         p.beginSheetModalForWindow(self.window, completionHandler: { retval in
             if retval == NSFileHandlingPanelOKButton {
-                let url = p.URL
                 var error : NSError? = nil
-                let avfile = AVAudioFile(forReading: url, commonFormat:
-                    AVAudioCommonFormat.PCMFormatFloat32, interleaved: false, error: &error)
                 if error {
                     self.window.presentError(error)
                 } else {
-                    let fp = JHAVAudioFileFrameProvider(file: avfile, channelIndex: 0)
+                    let fp = JHAVAudioFileFrameProvider(fileURL:p.URL)
                     self.waveformView.frameProvider = fp
                 }
             }

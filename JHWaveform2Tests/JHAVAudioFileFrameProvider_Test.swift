@@ -44,7 +44,7 @@ class JHAVAudioFileFrameProvider_Test: XCTestCase {
         XCTAssertNil(error,"failed to create AVAudioFile")
         XCTAssertEqual(avaudio.processingFormat.channelCount, 1,"")
         
-        let frameProvider = JHAVAudioFileFrameProvider(file: avaudio, channelIndex: 0)
+        let frameProvider = JHAVAudioFileFrameProvider(fileURL: monoDTMF_url)
         
         XCTAssertEqual(Int(frameProvider.frameCount), Int(avaudio.length), "Frame provider/AvAudioFile mismatch")
         
