@@ -55,12 +55,12 @@ class JHAudioWaveformView: NSView {
         path.moveToPoint(NSPoint(x: 0.0,y: 0.0))
         var points = self.waveformPoints
         path.appendBezierPathWithPoints( &points, count: points.count)
-        path.lineToPoint(NSPoint(x:CGFloat(self.bounds.width), y: 0.0))
+        path.lineToPoint(NSPoint(x:CGFloat(self.waveformPoints.count), y: 0.0))
         return path
     }
     }
     
-    var fillColor: NSColor = NSColor.selectedControlTextColor()
+    var fillColor: NSColor = NSColor.grayColor()
     var strokeColor: NSColor = NSColor.selectedControlTextColor()
     var backgroundColor: NSColor = NSColor.controlBackgroundColor()
     
