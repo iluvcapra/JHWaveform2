@@ -100,7 +100,7 @@ class JHMultichannelWaveformView: NSView {
         
         var animation = NSViewAnimation(viewAnimations: anims)
         animation.duration = 1.0
-        animation.animationCurve = NSAnimationCurve.Linear
+        animation.animationCurve = NSAnimationCurve.EaseInOut
         animation.startAnimation()
         
     }
