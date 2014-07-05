@@ -44,21 +44,30 @@ class JHMultichannelWaveformView: NSView {
             let height = self.bounds.height / CGFloat(fp.channelCount)
             
             self.channelViews = Array(0..fp.channelCount).map {
-                var thisframe = NSRect(x: 0.0,
-                    y: height * CGFloat((fp.channelCount - 1) - $0),
-                    width: self.bounds.width,
-                    height: height)
                 
-                var channelView = JHAudioWaveformView(frame: thisframe)
+                var channelView = JHAudioWaveformView(frame: self.boundsRectForChannel($0))
                 channelView.channel = $0
                 channelView.frameProvider = fp
-                var color = self.channelColorCarousel[ $0 % self.channelColorCarousel.count ]
+                var color = self.colorForChannel($0)
                 channelView.strokeColor = color
-                channelView.fillColor = color.highlightWithLevel(0.5)
+                channelView.fillColor = color.colorWithAlphaComponent(0.3)
                 
                 return channelView
             }
         }
+    }
+    }
+    
+
+    enum MultichannelStyle {
+        case OneLane
+        case HalfOverlap
+        case MultiLane
+    }
+    
+    var multichannelStyle: MultichannelStyle = .MultiLane {
+    didSet {
+        moveChannelFrames()
     }
     }
     
@@ -76,6 +85,52 @@ class JHMultichannelWaveformView: NSView {
         super.init(frame: frame)
         
     }
+    
+    func moveChannelFrames() -> () {
+        var anims = Array<NSDictionary>()
+        for (i, view) in enumerate(self.channelViews) {
+            var thisAnim = NSDictionary()
+            thisAnim.setValue(view, forKey: NSViewAnimationTargetKey)
+            thisAnim.setValue(NSValue(rect: view.frame), forKey: NSViewAnimationStartFrameKey)
+            thisAnim.setValue(NSValue(rect:boundsRectForChannel(i)), forKey: NSViewAnimationEndFrameKey )
+            
+            anims.append(thisAnim)
+        }
+        
+        var animation = NSViewAnimation(viewAnimations: anims)
+        animation.duration = 1.0
+        animation.animationCurve = NSAnimationCurve.Linear
+        animation.startAnimation()
+        
+    }
+    
+    func colorForChannel(channelIndex : Int) -> NSColor {
+        return self.channelColorCarousel[ channelIndex % self.channelColorCarousel.count ]
+    }
+    
+    func boundsRectForChannel(channelIndex : Int) -> NSRect {
+        var retVal = NSZeroRect
+        if let fp = self.frameProvider {
+            
+            switch multichannelStyle {
+            case .HalfOverlap:
+                fallthrough
+                
+            case .MultiLane:
+                let height = self.bounds.height / CGFloat(fp.channelCount)
+                
+                retVal = NSRect(x: 0.0,
+                    y: height * CGFloat((fp.channelCount - 1) - channelIndex),
+                    width: self.bounds.width,
+                    height: height)
+                
+            case .OneLane:
+                retVal = self.bounds
+            }
+        }
+        return retVal
+    }
+    
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
