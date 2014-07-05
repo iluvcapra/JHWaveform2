@@ -11,7 +11,6 @@
 		7D002F741961237E00F5F6DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D002F731961237E00F5F6DF /* AppDelegate.swift */; };
 		7D002F761961237E00F5F6DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D002F751961237E00F5F6DF /* Images.xcassets */; };
 		7D002F791961237E00F5F6DF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D002F771961237E00F5F6DF /* MainMenu.xib */; };
-		7D002F8E1961242E00F5F6DF /* JHWaveform2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */; };
 		7D09169F1960E27E00776EE7 /* Mono_DTMF_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169C1960E27E00776EE7 /* Mono_DTMF_Test.wav */; };
 		7D0916A01960E27E00776EE7 /* Mono_Wav_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169D1960E27E00776EE7 /* Mono_Wav_Test.wav */; };
 		7D0916A11960E27E00776EE7 /* Stereo_Pluck_Test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D09169E1960E27E00776EE7 /* Stereo_Pluck_Test.wav */; };
@@ -24,6 +23,8 @@
 		7D74D599195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D74D598195FA29A00A5F701 /* JHWaveformTransformingFrameProvider_Test.swift */; };
 		7D74D59B195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D74D59A195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift */; };
 		7D74D59C195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D74D59A195FB97100A5F701 /* JHAVAudioFileFrameProvider.swift */; };
+		7D9701241968846E00262F31 /* JHWaveform2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7D970127196886FF00262F31 /* JHWaveform2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7D9BF7D0195F4CD400BBE630 /* JHWaveform2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D9BF7CF195F4CD400BBE630 /* JHWaveform2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D9BF7D6195F4CD400BBE630 /* JHWaveform2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9BF7CA195F4CD400BBE630 /* JHWaveform2.framework */; };
 		7D9BF7E7195F4D0F00BBE630 /* JHAudioWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9BF7E6195F4D0F00BBE630 /* JHAudioWaveformView.swift */; };
@@ -46,6 +47,19 @@
 			remoteInfo = JHWaveform2;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7D970126196886E400262F31 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7D970127196886FF00262F31 /* JHWaveform2.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7D002F6D1961237E00F5F6DF /* WaveformView Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WaveformView Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D002F8E1961242E00F5F6DF /* JHWaveform2.framework in Frameworks */,
+				7D9701241968846E00262F31 /* JHWaveform2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +229,7 @@
 				7D002F691961237E00F5F6DF /* Sources */,
 				7D002F6A1961237E00F5F6DF /* Frameworks */,
 				7D002F6B1961237E00F5F6DF /* Resources */,
+				7D970126196886E400262F31 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -276,6 +291,7 @@
 					};
 					7D9BF7C9195F4CD400BBE630 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = Z62MSD4K94;
 					};
 					7D9BF7D4195F4CD400BBE630 = {
 						CreatedOnToolsVersion = 6.0;
@@ -397,7 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer: Jamie Hardt (3W98HM8R8S)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -414,7 +430,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer: Jamie Hardt (3W98HM8R8S)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "WaveformView Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -440,6 +456,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer: Jamie Hardt (3W98HM8R8S)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -484,6 +501,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer: Jamie Hardt (3W98HM8R8S)";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -508,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer: Jamie Hardt (3W98HM8R8S)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -515,7 +534,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = JHWaveform2/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -534,7 +553,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = JHWaveform2/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
