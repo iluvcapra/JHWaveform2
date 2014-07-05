@@ -59,6 +59,7 @@ class JHMultichannelWaveformView: NSView {
     }
     }
     
+    var backgroundColor: NSColor = NSColor.controlBackgroundColor()
     
     init(frame: NSRect) {
         super.init(frame: frame)
@@ -67,8 +68,13 @@ class JHMultichannelWaveformView: NSView {
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-
-  
+        
+        NSGraphicsContext.saveGraphicsState()
+        
+        backgroundColor.setFill()
+        NSBezierPath.fillRect(dirtyRect)
+        
+        NSGraphicsContext.restoreGraphicsState()
     }
     
 }
