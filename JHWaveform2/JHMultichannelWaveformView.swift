@@ -51,6 +51,7 @@ class JHMultichannelWaveformView: NSView {
                 var color = self.colorForChannel($0)
                 channelView.strokeColor = color
                 channelView.fillColor = color.colorWithAlphaComponent(0.3)
+                channelView.backgroundColor = NSColor.whiteColor().colorWithAlphaComponent(0.0)
                 
                 return channelView
             }
@@ -89,10 +90,10 @@ class JHMultichannelWaveformView: NSView {
     func moveChannelFrames() -> () {
         var anims = Array<NSDictionary>()
         for (i, view) in enumerate(self.channelViews) {
-            var thisAnim = NSDictionary()
-            thisAnim.setValue(view, forKey: NSViewAnimationTargetKey)
-            thisAnim.setValue(NSValue(rect: view.frame), forKey: NSViewAnimationStartFrameKey)
-            thisAnim.setValue(NSValue(rect:boundsRectForChannel(i)), forKey: NSViewAnimationEndFrameKey )
+            var thisAnim = NSMutableDictionary()
+            thisAnim.setObject(view, forKey: NSViewAnimationTargetKey)
+            thisAnim.setObject(NSValue(rect: view.frame), forKey: NSViewAnimationStartFrameKey)
+            thisAnim.setObject(NSValue(rect:boundsRectForChannel(i)), forKey: NSViewAnimationEndFrameKey )
             
             anims.append(thisAnim)
         }

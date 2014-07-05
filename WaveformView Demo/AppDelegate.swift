@@ -47,16 +47,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let menu = sender?.selectedItem as? NSMenuItem {
             switch menu.tag {
             case 0:
-                self.waveformView.waveformStyle = JHAudioWaveformView.WaveformStyle.Bilateral
+                self.waveformView.waveformStyle = .Bilateral
             case 1:
-                self.waveformView.waveformStyle = JHAudioWaveformView.WaveformStyle.Rectified
+                self.waveformView.waveformStyle = .Rectified
             default:
-                self.waveformView.waveformStyle = JHAudioWaveformView.WaveformStyle.Rectified
+                self.waveformView.waveformStyle = .Rectified
             }
         }
-        
-        
-        
+    }
+    
+    @IBAction func selectMultichannelStyle(sender: AnyObject?) {
+        if let menu = sender?.selectedItem as? NSMenuItem {
+            switch menu.tag {
+            case 0:
+                self.waveformView.multichannelStyle = .OneLane
+            case 1:
+                self.waveformView.multichannelStyle = .HalfOverlap
+            case 2:
+                self.waveformView.multichannelStyle = .MultiLane
+            default:
+                self.waveformView.multichannelStyle = .MultiLane
+            }
+        }
     }
 
 }

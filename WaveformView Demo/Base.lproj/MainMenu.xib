@@ -670,15 +670,15 @@
         <window title="WaveformView Demo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="240"/>
+            <rect key="contentRect" x="335" y="390" width="561" height="240"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
             <value key="minSize" type="size" width="480" height="240"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
+                <rect key="frame" x="0.0" y="0.0" width="561" height="240"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button appearanceType="aqua" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1b3-fw-Q7r">
-                        <rect key="frame" x="346" y="13" width="120" height="32"/>
+                        <rect key="frame" x="427" y="13" width="120" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="108" id="UVL-LP-GI0"/>
                             <constraint firstAttribute="height" constant="21" id="Vqb-CB-xJ2"/>
@@ -692,13 +692,13 @@
                         </connections>
                     </button>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="NNO-75-Zf3" customClass="JHMultichannelWaveformView" customModule="JHWaveform2">
-                        <rect key="frame" x="20" y="61" width="440" height="163"/>
+                        <rect key="frame" x="20" y="61" width="521" height="163"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="440" id="yHp-Pi-KYD"/>
                         </constraints>
                     </customView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aF1-JK-oHE">
-                        <rect key="frame" x="264" y="13" width="83" height="32"/>
+                        <rect key="frame" x="345" y="13" width="83" height="32"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="neO-tI-uL6">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -729,14 +729,36 @@ Gw
                             <action selector="selectWaveformStyle:" target="Voe-Tx-rLC" id="kvb-x2-dvG"/>
                         </connections>
                     </popUpButton>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mYl-g1-gTM">
+                        <rect key="frame" x="146" y="17" width="125" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="IsZ-Pc-gUe"/>
+                        </constraints>
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Tkk-6q-HAv">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="dy6-IX-TBv">
+                                <items>
+                                    <menuItem title="One Lane" keyEquivalent="1" id="TMO-9Z-OWu"/>
+                                    <menuItem title="Overlap" tag="1" keyEquivalent="2" id="O0S-l8-QZ4"/>
+                                    <menuItem title="Multilane" tag="2" keyEquivalent="3" id="udK-3i-VEe"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="selectMultichannelStyle:" target="Voe-Tx-rLC" id="Umn-MB-Wap"/>
+                        </connections>
+                    </popUpButton>
                 </subviews>
                 <constraints>
                     <constraint firstItem="1b3-fw-Q7r" firstAttribute="top" secondItem="NNO-75-Zf3" secondAttribute="bottom" constant="20" id="1IJ-gT-VXm"/>
                     <constraint firstAttribute="trailing" secondItem="1b3-fw-Q7r" secondAttribute="trailing" constant="20" id="3aG-yV-LzZ"/>
                     <constraint firstItem="NNO-75-Zf3" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="16" id="3fr-cw-To3"/>
+                    <constraint firstItem="mYl-g1-gTM" firstAttribute="leading" secondItem="Ii9-mh-XDs" secondAttribute="trailing" constant="8" id="7yM-7X-iZL"/>
                     <constraint firstItem="1b3-fw-Q7r" firstAttribute="leading" secondItem="aF1-JK-oHE" secondAttribute="trailing" constant="11" id="By3-f5-7kL"/>
                     <constraint firstAttribute="bottom" secondItem="aF1-JK-oHE" secondAttribute="bottom" constant="20" id="C5x-VS-MbQ"/>
                     <constraint firstItem="Ii9-mh-XDs" firstAttribute="top" secondItem="NNO-75-Zf3" secondAttribute="bottom" constant="20" id="Cv1-Ac-gTg"/>
+                    <constraint firstAttribute="bottom" secondItem="mYl-g1-gTM" secondAttribute="bottom" constant="20" id="aG0-Mm-GgH"/>
                     <constraint firstItem="aF1-JK-oHE" firstAttribute="top" secondItem="NNO-75-Zf3" secondAttribute="bottom" constant="20" id="aJA-ON-agJ"/>
                     <constraint firstAttribute="trailing" secondItem="NNO-75-Zf3" secondAttribute="trailing" constant="20" id="f64-vy-gfp"/>
                     <constraint firstAttribute="bottom" secondItem="Ii9-mh-XDs" secondAttribute="bottom" constant="20" id="nqL-LY-zNc"/>
@@ -745,7 +767,7 @@ Gw
                     <constraint firstItem="NNO-75-Zf3" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="r76-WG-nlN"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="213" y="94"/>
+            <point key="canvasLocation" x="172.5" y="94"/>
         </window>
     </objects>
 </document>
