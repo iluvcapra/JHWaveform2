@@ -109,6 +109,7 @@ class JHAudioWaveformView: NSView {
     init(frame: NSRect) {
         waveformPoints = NSPoint[]()
         super.init(frame: frame)
+       // self.setBoundsSize( NSSize(width: 1000.0, height: self.bounds.height) )
         clearWaveformPoints()
         readOperationQueue.maxConcurrentOperationCount = 1
     }
@@ -177,6 +178,10 @@ class JHAudioWaveformView: NSView {
         } else {
             
         }
+        
+        NSColor.blackColor().setStroke()
+        
+        NSBezierPath.strokeRect(self.bounds)
         
         
     }
